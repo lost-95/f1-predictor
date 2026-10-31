@@ -11,7 +11,7 @@
   <title>F1 Predictor</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="static/style.css?v=7">
+  <link rel="stylesheet" href="static/style.css?v=8">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 <body>
@@ -94,17 +94,19 @@
                 <h2 data-i18n="fanta.how"></h2>
                 <ul class="list">
                   <li><span data-i18n-html="fanta.how1"></span> <span id="fanta-blend"></span> <span data-i18n="fanta.fixed"></span></li>
-                  <li data-i18n-html="fanta.how2"></li>
-                  <li data-i18n-html="fanta.how3"></li>
-                  <li data-i18n="fanta.how4"></li>
-                  <li data-i18n-html="fanta.how5"></li>
+                  <li id="fanta-official-note" data-i18n-html="fanta.official" hidden></li>
+                  <li class="model-pricing" data-i18n-html="fanta.how2"></li>
+                  <li class="model-pricing" data-i18n-html="fanta.how3"></li>
+                  <li class="model-pricing" data-i18n="fanta.how4"></li>
+                  <li class="model-pricing" data-i18n-html="fanta.how5"></li>
+                  <li data-i18n-html="fanta.team_value"></li>
                 </ul>
                 <details class="points-table">
                   <summary data-i18n="fanta.points_table"></summary>
                   <div class="table-wrap"><table class="grid-table" id="fanta-points"></table></div>
                 </details>
               </div>
-              <div class="card">
+              <div class="card" id="fanta-min-card">
                 <h2 data-i18n="fanta.min_title"></h2>
                 <p class="muted small" data-i18n="fanta.min_help"></p>
                 <div class="fanta-min">
@@ -131,7 +133,7 @@
               <h2 data-i18n="fanta.list_teams"></h2>
               <div class="table-wrap">
                 <table class="grid-table" id="fanta-teams-table">
-                  <thead><tr><th>#</th><th data-i18n="th.team"></th><th class="hide-sm" data-i18n="th.drivers"></th><th data-i18n="th.price"></th><th data-i18n="th.value"></th></tr></thead>
+                  <thead><tr><th>#</th><th data-i18n="th.team"></th><th class="hide-sm" data-i18n="th.drivers"></th><th data-i18n="th.price"></th><th data-i18n="th.team_value"></th></tr></thead>
                   <tbody></tbody>
                 </table>
               </div>
@@ -148,7 +150,7 @@
                 <div><span class="muted small" data-i18n="fanta.menu.teams"></span><b id="b-count-teams"></b></div>
                 <div><span class="muted small" data-i18n="b.spent"></span><b id="b-spent"></b><span class="sub" id="b-split"></span></div>
                 <div><span class="muted small" data-i18n="b.left"></span><b id="b-left"></b></div>
-                <div><span class="muted small" data-i18n="b.exp"></span><b id="b-exp"></b></div>
+                <div><span class="muted small" data-i18n="b.exp"></span><b id="b-exp"></b><span class="sub" id="b-target"></span></div>
               </div>
               <div class="budget-bar"><i id="b-bar"></i></div>
               <div class="b-status" id="b-status"></div>
@@ -263,7 +265,7 @@
     </div>
   </div>
 
-  <script src="static/i18n.js?v=3"></script>
-  <script src="static/app.js?v=11"></script>
+  <script src="static/i18n.js?v=4"></script>
+  <script src="static/app.js?v=12"></script>
 </body>
 </html>

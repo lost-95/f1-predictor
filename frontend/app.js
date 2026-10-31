@@ -216,6 +216,7 @@ async function loadFanta() {
 // Driver prices for a chosen minimum price (same rule as fanta.prices in the backend):
 // top value = 30, lowest value = minimum price, everyone else linear in between, one decimal.
 function reprice(base, min) {
+  if (base.price_source === 'official') return { ...base };  // official prices are fixed
   const vals = base.drivers.map(x => x.value), lo = Math.min(...vals), hi = Math.max(...vals);
   const [a, b] = base.min_price_range;
   const pMin = min == null ? base.min_price_auto : Math.min(b, Math.max(a, Math.round(min * 10) / 10));
@@ -237,6 +238,11 @@ function renderPrices() {
   $('#fanta-min').value = d.min_price;
   $('#fanta-min-val').textContent = coins(d.min_price);
   $('#fanta-auto').disabled = fantaMin == null;
+  const official = d.price_source === 'official';
+  // official prices: the computed-price controls stay in the page, just hidden
+  $('#fanta-min-card').hidden = official;
+  $('#fanta-official-note').hidden = !official;
+  $$('.model-pricing').forEach(el => el.hidden = official);
   const total = d.drivers.reduce((s, x) => s + x.price, 0);
   $('#fanta-summary').innerHTML = (fantaMin == null
     ? `<span class="chip">${t('fanta.min_auto', { v: coins(d.min_price) })}</span>`
@@ -352,6 +358,10 @@ function renderBuilder() {
   $('#b-left').textContent = coins(S.left);
   $('#b-left').classList.toggle('bad', S.over);
   $('#b-exp').textContent = num(S.value, 0);
+  const target = fantaData.rules.target;
+  $('#b-target').textContent = target ? (S.value >= target ? t('b.target_reached', { n: num(target, 0) })
+    : t('b.target_left', { v: num(target - S.value, 0), n: num(target, 0) })) : '';
+  $('#b-target').className = 'sub' + (target && S.value >= target ? ' good' : '');
   $('#b-bar').style.width = Math.min(100, S.spent / S.budget * 100).toFixed(1) + '%';
   $('#b-bar').classList.toggle('over', S.over);
   const st = $('#b-status');

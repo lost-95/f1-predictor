@@ -45,9 +45,13 @@ def entrants(race: dict, results: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFr
         names = results.drop_duplicates("constructorId", keep="last").set_index("constructorId").constructorName
         ent["constructorName"] = ent.constructorId.map(names).fillna(ent.constructorName)
         return ent, quali, "post_quali"
-    cur = results[results.season == results.season.max()]
-    last = cur[cur["round"] == cur["round"].max()]
-    ent = last[["driverId", "driverName", "driverCode", "constructorId", "constructorName"]].copy()
+    lineup = fanta.official_lineup(results)  # official fantasy list = latest known line-up
+    if lineup:
+        ent = pd.DataFrame(lineup).drop(columns="price")
+    else:
+        cur = results[results.season == results.season.max()]
+        last = cur[cur["round"] == cur["round"].max()]
+        ent = last[["driverId", "driverName", "driverCode", "constructorId", "constructorName"]].copy()
     ent["season"], ent["round"], ent["grid"] = season, rnd, np.nan
     return ent, pd.DataFrame(), "pre_quali"
 

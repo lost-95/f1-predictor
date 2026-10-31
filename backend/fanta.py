@@ -21,6 +21,7 @@ the top value), kept inside 3.0-4.0. When it already falls in that range every p
 exactly proportional to value; otherwise the scale is anchored at the two ends.
 """
 import json
+import unicodedata
 
 import numpy as np
 import pandas as pd
@@ -37,9 +38,23 @@ QUALI_POINTS = [149.82, 135.56, 122.66, 110.99, 99.43, 89.07, 79.00, 69.37, 59.7
 RACE_POINTS = [299.64, 271.13, 245.33, 221.98, 198.86, 178.14, 158.00, 138.74, 119.41, 100.74, 86.71,
                73.89, 63.60, 54.74, 47.11, 40.15, 33.20, 27.18, 22.26, 18.22, 14.92, 12.21]
 
-# Team building rules: exactly 6 drivers and 3 teams, one shared budget for all of them
+# Team building rules: exactly 6 drivers and 3 teams, one shared budget for all of them.
+# A team scores the points of both its drivers. TARGET_POINTS = a good squad score.
 DRIVER_PICKS, TEAM_PICKS = 6, 3
 TOTAL_BUDGET = 140.0
+TARGET_POINTS = 2000
+
+# Official prices given by the fantasy game (data/fanta_official_prices.json). While the
+# file exists they replace the computed prices below (which stay available, just unused)
+# and its driver list is the line-up of the next race (e.g. a newcomer replacing someone).
+OFFICIAL_FILE = DATA / "fanta_official_prices.json"
+TEAM_IDS = {
+    "red bull racing": "red_bull", "red bull": "red_bull", "ferrari": "ferrari", "mercedes": "mercedes",
+    "mclaren": "mclaren", "racing bulls": "rb", "rb f1 team": "rb", "alpine": "alpine",
+    "alpine f1 team": "alpine", "audi": "audi", "haas f1 team": "haas", "haas": "haas",
+    "aston martin": "aston_martin", "williams": "williams", "cadillac": "cadillac",
+    "cadillac f1 team": "cadillac",
+}
 # Team price: average value of its drivers, on the same proportional scale as drivers
 # (30 coins = value of the top driver), kept within 4-30. So 30 is reached only by a team
 # whose drivers are both worth as much as the top driver.
@@ -68,8 +83,69 @@ def prices(values, min_price: float | None = None) -> tuple[np.ndarray, float]:
     return np.round(p, 1), p_min
 
 
+def _norm(s: str) -> str:
+    s = unicodedata.normalize("NFKD", str(s))
+    return " ".join("".join(c for c in s if not unicodedata.combining(c)).lower().split())
+
+
+def team_id(name: str) -> str:
+    n = _norm(name)
+    return TEAM_IDS.get(n, n.replace(" ", "_"))
+
+
+def load_official() -> dict | None:
+    return json.loads(OFFICIAL_FILE.read_text(encoding="utf-8")) if OFFICIAL_FILE.exists() else None
+
+
+def official_team_prices() -> dict[str, float]:
+    off = load_official()
+    return {team_id(t["name"]): float(t["price"]) for t in off["teams"]} if off else {}
+
+
+def official_driver_price(name: str) -> float | None:
+    """Official price for a driver name (full name, else unique surname; accents ignored)."""
+    off = load_official()
+    if not off:
+        return None
+    n = _norm(name)
+    full = {_norm(d["name"]): d["price"] for d in off["drivers"]}
+    if n in full:
+        return float(full[n])
+    surname = [d["price"] for d in off["drivers"] if _norm(d["name"]).split()[-1] == n.split()[-1]]
+    return float(surname[0]) if len(surname) == 1 else None
+
+
+def official_lineup(results: pd.DataFrame) -> list[dict] | None:
+    """Drivers of the official price list as entrant rows. Names are matched to the results
+    data (full name, else unique surname, accents ignored); a driver never seen before gets
+    a new id."""
+    off = load_official()
+    if not off:
+        return None
+    recent = results[results.season >= results.season.max() - 1].drop_duplicates("driverId", keep="last")
+    known = dict(zip(recent.driverId, recent.driverName))
+    codes = dict(zip(recent.driverId, recent.driverCode))
+    team_names = results.drop_duplicates("constructorId", keep="last").set_index("constructorId").constructorName
+    rows = []
+    for d in off["drivers"]:
+        n = _norm(d["name"])
+        did = next((k for k, full in known.items() if _norm(full) == n), None)
+        if did is None:
+            same_surname = [k for k, full in known.items() if _norm(full).split()[-1] == n.split()[-1]]
+            did = same_surname[0] if len(same_surname) == 1 else None
+        if did is None:  # newcomer
+            surname = n.split()[-1]
+            did, name, code = surname, d["name"], surname[:3].upper()
+        else:
+            name, code = known[did], codes.get(did)
+        tid = team_id(d["team"])
+        rows.append({"driverId": did, "driverName": name, "driverCode": code, "constructorId": tid,
+                     "constructorName": team_names.get(tid, d["team"]), "price": float(d["price"])})
+    return rows
+
+
 def team_prices(team_values, top_driver_value: float) -> np.ndarray:
-    """team_values: average driver value per team."""
+    """Computed team price (used without official prices). team_values: average driver value per team."""
     v = np.asarray(team_values, dtype=float)
     p = TOP_PRICE * v / top_driver_value if top_driver_value > 0 else np.full(len(v), TEAM_PRICE_RANGE[0])
     return np.round(np.clip(p, *TEAM_PRICE_RANGE), 1)

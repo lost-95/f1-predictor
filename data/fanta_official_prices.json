@@ -1,0 +1,40 @@
+{
+  "note": "Official Fantasy F1 prices (entered by hand). While this file exists they replace the computed prices, and its driver list is used as the line-up of the next race. Delete it to go back to the computed prices.",
+  "drivers": [
+    {"name": "Max Verstappen", "team": "Red Bull Racing", "price": 30.0},
+    {"name": "Charles Leclerc", "team": "Ferrari", "price": 25.8},
+    {"name": "Kimi Antonelli", "team": "Mercedes", "price": 25.6},
+    {"name": "Lewis Hamilton", "team": "Ferrari", "price": 22.1},
+    {"name": "Lando Norris", "team": "McLaren", "price": 21.8},
+    {"name": "George Russell", "team": "Mercedes", "price": 21.6},
+    {"name": "Isack Hadjar", "team": "Red Bull Racing", "price": 17.9},
+    {"name": "Oscar Piastri", "team": "McLaren", "price": 17.7},
+    {"name": "Liam Lawson", "team": "Racing Bulls", "price": 14.4},
+    {"name": "Pierre Gasly", "team": "Alpine", "price": 11.6},
+    {"name": "Gabriel Bortoleto", "team": "Audi", "price": 11.3},
+    {"name": "Arvid Lindblad", "team": "Racing Bulls", "price": 10.8},
+    {"name": "Oliver Bearman", "team": "Haas F1 Team", "price": 9.2},
+    {"name": "Nico Hulkenberg", "team": "Audi", "price": 8.3},
+    {"name": "Franco Colapinto", "team": "Alpine", "price": 8.1},
+    {"name": "Ryo Hirakawa", "team": "Haas F1 Team", "price": 7.3},
+    {"name": "Fernando Alonso", "team": "Aston Martin", "price": 6.8},
+    {"name": "Lance Stroll", "team": "Aston Martin", "price": 5.7},
+    {"name": "Carlos Sainz", "team": "Williams", "price": 5.4},
+    {"name": "Alexander Albon", "team": "Williams", "price": 5.0},
+    {"name": "Valtteri Bottas", "team": "Cadillac", "price": 4.0},
+    {"name": "Sergio Perez", "team": "Cadillac", "price": 3.8}
+  ],
+  "teams": [
+    {"name": "Red Bull Racing", "price": 26.3},
+    {"name": "Ferrari", "price": 26.3},
+    {"name": "Mercedes", "price": 26.0},
+    {"name": "McLaren", "price": 21.7},
+    {"name": "Racing Bulls", "price": 13.9},
+    {"name": "Alpine", "price": 10.8},
+    {"name": "Audi", "price": 10.8},
+    {"name": "Haas F1 Team", "price": 9.1},
+    {"name": "Aston Martin", "price": 6.9},
+    {"name": "Williams", "price": 5.7},
+    {"name": "Cadillac", "price": 4.3}
+  ]
+}

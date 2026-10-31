@@ -169,3 +169,4 @@ select { background: var(--panel); color: var(--text); border: 1px solid var(--l
   .side-group { display: none; }
   .b-stats { gap: 18px; }
 }
+.b-stats .sub.good { color: var(--good); }

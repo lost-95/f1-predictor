@@ -38,6 +38,8 @@ Pagina **Fanta F1** (API `/api/fanta?min_price=3.0..4.0`, logica in `backend/fan
 - il più quotato costa 30,0 coins, il meno quotato tra 3,0 e 4,0, gli altri in proporzione lineare tra i due, con una cifra decimale;
 - prezzo minimo automatico = 30 × valore dell'ultimo ÷ valore del primo, riportato tra 3,0 e 4,0; dalla pagina si può scegliere a mano;
 - prezzo dei team = valore medio dei due piloti sulla stessa scala (30 = pilota migliore), tra 4 e 30;
+- **prezzi ufficiali**: se esiste `data/fanta_official_prices.json` (prezzi forniti dal fanta, inseriti a mano) sostituiscono quelli calcolati, che restano disponibili ma nascosti; la sua lista piloti è anche la formazione della prossima gara (es. un esordiente al posto di un titolare). Per tornare ai prezzi calcolati basta cancellare il file;
+- un team vale i punti di **entrambi** i suoi piloti (somma dei punti attesi); obiettivo di una buona squadra: 2.000 punti (`TARGET_POINTS`);
 - **Team Building** (menu a sinistra): obbligatoriamente 6 piloti e 3 team, con un budget totale di 140 coins condiviso tra piloti e team (regole in `fanta.py`). La squadra scelta resta salvata nel browser; "Suggerisci la squadra migliore" trova i piloti e i team con più punti attesi che stanno insieme nel budget.
 
 ## Lingua e orari

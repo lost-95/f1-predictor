@@ -73,29 +73,40 @@ def api_fanta(min_price: float | None = None):
         return {"race": None}
     drivers = nxt["drivers"]
     values = [d["fanta_value"] for d in drivers]
-    price, used = fanta.prices(values, min_price)
-    rows = [{"driverId": d["driverId"], "name": d["name"], "code": d["code"], "team": d["team"],
-             "teamId": d["teamId"], "value": d["fanta_value"], "value_quali": d["fanta_quali"],
-             "value_race": d["fanta_race"], "value_model": d["fanta_model"], "form": d["fanta_form"],
-             "form_n": d["fanta_form_n"], "price": float(p)} for d, p in zip(drivers, price)]
+    price, used = fanta.prices(values, min_price)  # computed prices (kept as price_model)
+    official = fanta.load_official() is not None
+    off_team = fanta.official_team_prices()
+    rows = []
+    for d, p in zip(drivers, price):
+        off_price = fanta.official_driver_price(d["name"]) if official else None
+        if official and off_price is None:
+            continue  # not in the official list (e.g. a reserve driver)
+        rows.append({"driverId": d["driverId"], "name": d["name"], "code": d["code"], "team": d["team"],
+                     "teamId": d["teamId"], "value": d["fanta_value"], "value_quali": d["fanta_quali"],
+                     "value_race": d["fanta_race"], "value_model": d["fanta_model"], "form": d["fanta_form"],
+                     "form_n": d["fanta_form_n"], "price_model": float(p),
+                     "price": off_price if official else float(p)})
     rows.sort(key=lambda r: (-r["price"], -r["value"]))
 
+    # a team scores the points of both its drivers
     teams = {}
     for d in drivers:
         t = teams.setdefault(d["teamId"], {"teamId": d["teamId"], "name": d["team"], "drivers": [], "values": []})
         t["drivers"].append(d["code"] or d["name"])
         t["values"].append(d["fanta_value"])
     teams = list(teams.values())
-    for t in teams:
-        t["value"] = round(sum(t["values"]) / len(t["values"]), 2)
+    model_team = fanta.team_prices([sum(t["values"]) / len(t["values"]) for t in teams], max(values))
+    for t, p in zip(teams, model_team):
+        t["value"] = round(sum(t["values"]), 2)
+        t["price_model"] = float(p)
+        t["price"] = off_team.get(t["teamId"], float(p)) if official else float(p)
         del t["values"]
-    for t, p in zip(teams, fanta.team_prices([t["value"] for t in teams], max(values))):
-        t["price"] = float(p)
     teams.sort(key=lambda t: (-t["price"], -t["value"]))
 
     return clean({"race": nxt["race"], "top_price": fanta.TOP_PRICE, "min_price_range": [lo, hi],
+                  "price_source": "official" if official else "model",
                   "teams": teams, "team_price_range": list(fanta.TEAM_PRICE_RANGE),
-                  "rules": {"budget": fanta.TOTAL_BUDGET,
+                  "rules": {"budget": fanta.TOTAL_BUDGET, "target": fanta.TARGET_POINTS,
                             "drivers": {"picks": fanta.DRIVER_PICKS}, "teams": {"picks": fanta.TEAM_PICKS}},
                   "min_price_auto": fanta.auto_min_price(values), "min_price": used, "drivers": rows,
                   "points_table": {"quali": fanta.QUALI_POINTS, "race": fanta.RACE_POINTS},
