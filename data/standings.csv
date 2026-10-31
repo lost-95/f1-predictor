@@ -1,0 +1,896 @@
+season,kind,position,points,wins,id,name,team
+2001,driver,1,123.0,9,michael_schumacher,Michael Schumacher,Ferrari
+2001,driver,2,65.0,2,coulthard,David Coulthard,McLaren
+2001,driver,3,56.0,0,barrichello,Rubens Barrichello,Ferrari
+2001,driver,4,49.0,3,ralf_schumacher,Ralf Schumacher,Williams
+2001,driver,5,37.0,2,hakkinen,Mika Häkkinen,McLaren
+2001,driver,6,31.0,1,montoya,Juan Pablo Montoya,Williams
+2001,driver,7,12.0,0,villeneuve,Jacques Villeneuve,BAR
+2001,driver,8,12.0,0,heidfeld,Nick Heidfeld,Sauber
+2001,driver,9,12.0,0,trulli,Jarno Trulli,Jordan
+2001,driver,10,9.0,0,raikkonen,Kimi Räikkönen,Sauber
+2001,driver,11,8.0,0,fisichella,Giancarlo Fisichella,Benetton
+2001,driver,12,6.0,0,irvine,Eddie Irvine,Jaguar
+2001,driver,13,6.0,0,frentzen,Heinz-Harald Frentzen,Prost
+2001,driver,14,5.0,0,panis,Olivier Panis,BAR
+2001,driver,15,5.0,0,alesi,Jean Alesi,Jordan
+2001,driver,16,3.0,0,rosa,Pedro de la Rosa,Jaguar
+2001,driver,17,2.0,0,button,Jenson Button,Benetton
+2001,driver,18,1.0,0,verstappen,Jos Verstappen,Arrows
+2001,driver,0,0.0,0,zonta,Ricardo Zonta,Jordan
+2001,driver,0,0.0,0,burti,Luciano Burti,Prost
+2001,driver,0,0.0,0,bernoldi,Enrique Bernoldi,Arrows
+2001,driver,0,0.0,0,marques,Tarso Marques,Minardi
+2001,driver,0,0.0,0,alonso,Fernando Alonso,Minardi
+2001,driver,0,0.0,0,enge,Tomáš Enge,Prost
+2001,driver,0,0.0,0,mazzacane,Gastón Mazzacane,Prost
+2001,driver,0,0.0,0,yoong,Alex Yoong,Minardi
+2001,constructor,1,179.0,9,ferrari,Ferrari,
+2001,constructor,2,102.0,4,mclaren,McLaren,
+2001,constructor,3,80.0,4,williams,Williams,
+2001,constructor,4,21.0,0,sauber,Sauber,
+2001,constructor,5,19.0,0,jordan,Jordan,
+2001,constructor,6,17.0,0,bar,BAR,
+2001,constructor,7,10.0,0,benetton,Benetton,
+2001,constructor,8,9.0,0,jaguar,Jaguar,
+2001,constructor,9,4.0,0,prost,Prost,
+2001,constructor,10,1.0,0,arrows,Arrows,
+2001,constructor,0,0.0,0,minardi,Minardi,
+2002,driver,1,144.0,11,michael_schumacher,Michael Schumacher,Ferrari
+2002,driver,2,77.0,4,barrichello,Rubens Barrichello,Ferrari
+2002,driver,3,50.0,0,montoya,Juan Pablo Montoya,Williams
+2002,driver,4,42.0,1,ralf_schumacher,Ralf Schumacher,Williams
+2002,driver,5,41.0,1,coulthard,David Coulthard,McLaren
+2002,driver,6,24.0,0,raikkonen,Kimi Räikkönen,McLaren
+2002,driver,7,14.0,0,button,Jenson Button,Renault
+2002,driver,8,9.0,0,trulli,Jarno Trulli,Renault
+2002,driver,9,8.0,0,irvine,Eddie Irvine,Jaguar
+2002,driver,10,7.0,0,heidfeld,Nick Heidfeld,Sauber
+2002,driver,11,7.0,0,fisichella,Giancarlo Fisichella,Jordan
+2002,driver,12,4.0,0,villeneuve,Jacques Villeneuve,BAR
+2002,driver,13,4.0,0,massa,Felipe Massa,Sauber
+2002,driver,14,3.0,0,panis,Olivier Panis,BAR
+2002,driver,15,2.0,0,sato,Takuma Sato,Jordan
+2002,driver,16,2.0,0,webber,Mark Webber,Minardi
+2002,driver,17,2.0,0,salo,Mika Salo,Toyota
+2002,driver,18,2.0,0,frentzen,Heinz-Harald Frentzen,Sauber
+2002,driver,19,0.0,0,mcnish,Allan McNish,Toyota
+2002,driver,20,0.0,0,yoong,Alex Yoong,Minardi
+2002,driver,21,0.0,0,rosa,Pedro de la Rosa,Jaguar
+2002,driver,22,0.0,0,bernoldi,Enrique Bernoldi,Arrows
+2002,driver,0,0.0,0,davidson,Anthony Davidson,Minardi
+2002,constructor,1,221.0,15,ferrari,Ferrari,
+2002,constructor,2,92.0,1,williams,Williams,
+2002,constructor,3,65.0,1,mclaren,McLaren,
+2002,constructor,4,23.0,0,renault,Renault,
+2002,constructor,5,11.0,0,sauber,Sauber,
+2002,constructor,6,9.0,0,jordan,Jordan,
+2002,constructor,7,8.0,0,jaguar,Jaguar,
+2002,constructor,8,7.0,0,bar,BAR,
+2002,constructor,9,2.0,0,minardi,Minardi,
+2002,constructor,10,2.0,0,toyota,Toyota,
+2002,constructor,11,2.0,0,arrows,Arrows,
+2003,driver,1,93.0,6,michael_schumacher,Michael Schumacher,Ferrari
+2003,driver,2,91.0,1,raikkonen,Kimi Räikkönen,McLaren
+2003,driver,3,82.0,2,montoya,Juan Pablo Montoya,Williams
+2003,driver,4,65.0,2,barrichello,Rubens Barrichello,Ferrari
+2003,driver,5,58.0,2,ralf_schumacher,Ralf Schumacher,Williams
+2003,driver,6,55.0,1,alonso,Fernando Alonso,Renault
+2003,driver,7,51.0,1,coulthard,David Coulthard,McLaren
+2003,driver,8,33.0,0,trulli,Jarno Trulli,Renault
+2003,driver,9,17.0,0,button,Jenson Button,BAR
+2003,driver,10,17.0,0,webber,Mark Webber,Jaguar
+2003,driver,11,13.0,0,frentzen,Heinz-Harald Frentzen,Sauber
+2003,driver,12,12.0,1,fisichella,Giancarlo Fisichella,Jordan
+2003,driver,13,10.0,0,matta,Cristiano da Matta,Toyota
+2003,driver,14,6.0,0,heidfeld,Nick Heidfeld,Sauber
+2003,driver,15,6.0,0,panis,Olivier Panis,Toyota
+2003,driver,16,6.0,0,villeneuve,Jacques Villeneuve,BAR
+2003,driver,17,4.0,0,gene,Marc Gené,Williams
+2003,driver,18,3.0,0,sato,Takuma Sato,BAR
+2003,driver,19,1.0,0,firman,Ralph Firman,Jordan
+2003,driver,20,1.0,0,wilson,Justin Wilson,Jaguar
+2003,driver,21,0.0,0,pizzonia,Antônio Pizzonia,Jaguar
+2003,driver,22,0.0,0,verstappen,Jos Verstappen,Minardi
+2003,driver,23,0.0,0,kiesa,Nicolas Kiesa,Minardi
+2003,driver,24,0.0,0,baumgartner,Zsolt Baumgartner,Jordan
+2003,constructor,1,158.0,8,ferrari,Ferrari,
+2003,constructor,2,144.0,4,williams,Williams,
+2003,constructor,3,142.0,2,mclaren,McLaren,
+2003,constructor,4,88.0,1,renault,Renault,
+2003,constructor,5,26.0,0,bar,BAR,
+2003,constructor,6,19.0,0,sauber,Sauber,
+2003,constructor,7,18.0,0,jaguar,Jaguar,
+2003,constructor,8,16.0,0,toyota,Toyota,
+2003,constructor,9,13.0,1,jordan,Jordan,
+2003,constructor,10,0.0,0,minardi,Minardi,
+2004,driver,1,148.0,13,michael_schumacher,Michael Schumacher,Ferrari
+2004,driver,2,114.0,2,barrichello,Rubens Barrichello,Ferrari
+2004,driver,3,85.0,0,button,Jenson Button,BAR
+2004,driver,4,59.0,0,alonso,Fernando Alonso,Renault
+2004,driver,5,58.0,1,montoya,Juan Pablo Montoya,Williams
+2004,driver,6,46.0,1,trulli,Jarno Trulli,Toyota
+2004,driver,7,45.0,1,raikkonen,Kimi Räikkönen,McLaren
+2004,driver,8,34.0,0,sato,Takuma Sato,BAR
+2004,driver,9,24.0,0,ralf_schumacher,Ralf Schumacher,Williams
+2004,driver,10,24.0,0,coulthard,David Coulthard,McLaren
+2004,driver,11,22.0,0,fisichella,Giancarlo Fisichella,Sauber
+2004,driver,12,12.0,0,massa,Felipe Massa,Sauber
+2004,driver,13,7.0,0,webber,Mark Webber,Jaguar
+2004,driver,14,6.0,0,panis,Olivier Panis,Toyota
+2004,driver,15,6.0,0,pizzonia,Antônio Pizzonia,Williams
+2004,driver,16,3.0,0,klien,Christian Klien,Jaguar
+2004,driver,17,3.0,0,matta,Cristiano da Matta,Toyota
+2004,driver,18,3.0,0,heidfeld,Nick Heidfeld,Jordan
+2004,driver,19,2.0,0,glock,Timo Glock,Jordan
+2004,driver,20,1.0,0,baumgartner,Zsolt Baumgartner,Minardi
+2004,driver,21,0.0,0,villeneuve,Jacques Villeneuve,Renault
+2004,driver,22,0.0,0,zonta,Ricardo Zonta,Toyota
+2004,driver,23,0.0,0,gene,Marc Gené,Williams
+2004,driver,24,0.0,0,pantano,Giorgio Pantano,Jordan
+2004,driver,25,0.0,0,bruni,Gianmaria Bruni,Minardi
+2004,constructor,1,262.0,15,ferrari,Ferrari,
+2004,constructor,2,119.0,0,bar,BAR,
+2004,constructor,3,105.0,1,renault,Renault,
+2004,constructor,4,88.0,1,williams,Williams,
+2004,constructor,5,69.0,1,mclaren,McLaren,
+2004,constructor,6,34.0,0,sauber,Sauber,
+2004,constructor,7,10.0,0,jaguar,Jaguar,
+2004,constructor,8,9.0,0,toyota,Toyota,
+2004,constructor,9,5.0,0,jordan,Jordan,
+2004,constructor,10,1.0,0,minardi,Minardi,
+2005,driver,1,133.0,7,alonso,Fernando Alonso,Renault
+2005,driver,2,112.0,7,raikkonen,Kimi Räikkönen,McLaren
+2005,driver,3,62.0,1,michael_schumacher,Michael Schumacher,Ferrari
+2005,driver,4,60.0,3,montoya,Juan Pablo Montoya,McLaren
+2005,driver,5,58.0,1,fisichella,Giancarlo Fisichella,Renault
+2005,driver,6,45.0,0,ralf_schumacher,Ralf Schumacher,Toyota
+2005,driver,7,43.0,0,trulli,Jarno Trulli,Toyota
+2005,driver,8,38.0,0,barrichello,Rubens Barrichello,Ferrari
+2005,driver,9,37.0,0,button,Jenson Button,BAR
+2005,driver,10,36.0,0,webber,Mark Webber,Williams
+2005,driver,11,28.0,0,heidfeld,Nick Heidfeld,Williams
+2005,driver,12,24.0,0,coulthard,David Coulthard,Red Bull
+2005,driver,13,11.0,0,massa,Felipe Massa,Sauber
+2005,driver,14,9.0,0,villeneuve,Jacques Villeneuve,Sauber
+2005,driver,15,9.0,0,klien,Christian Klien,Red Bull
+2005,driver,16,7.0,0,monteiro,Tiago Monteiro,Jordan
+2005,driver,17,6.0,0,wurz,Alexander Wurz,McLaren
+2005,driver,18,5.0,0,karthikeyan,Narain Karthikeyan,Jordan
+2005,driver,19,4.0,0,albers,Christijan Albers,Minardi
+2005,driver,20,4.0,0,rosa,Pedro de la Rosa,McLaren
+2005,driver,21,3.0,0,friesacher,Patrick Friesacher,Minardi
+2005,driver,22,2.0,0,pizzonia,Antônio Pizzonia,Williams
+2005,driver,23,1.0,0,sato,Takuma Sato,BAR
+2005,driver,24,1.0,0,liuzzi,Vitantonio Liuzzi,Red Bull
+2005,driver,25,0.0,0,doornbos,Robert Doornbos,Minardi
+2005,driver,0,0.0,0,zonta,Ricardo Zonta,Toyota
+2005,driver,0,0.0,0,davidson,Anthony Davidson,BAR
+2005,constructor,1,191.0,8,renault,Renault,
+2005,constructor,2,182.0,10,mclaren,McLaren,
+2005,constructor,3,100.0,1,ferrari,Ferrari,
+2005,constructor,4,88.0,0,toyota,Toyota,
+2005,constructor,5,66.0,0,williams,Williams,
+2005,constructor,6,38.0,0,bar,BAR,
+2005,constructor,7,34.0,0,red_bull,Red Bull,
+2005,constructor,8,20.0,0,sauber,Sauber,
+2005,constructor,9,12.0,0,jordan,Jordan,
+2005,constructor,10,7.0,0,minardi,Minardi,
+2006,driver,1,134.0,7,alonso,Fernando Alonso,Renault
+2006,driver,2,121.0,7,michael_schumacher,Michael Schumacher,Ferrari
+2006,driver,3,80.0,2,massa,Felipe Massa,Ferrari
+2006,driver,4,72.0,1,fisichella,Giancarlo Fisichella,Renault
+2006,driver,5,65.0,0,raikkonen,Kimi Räikkönen,McLaren
+2006,driver,6,56.0,1,button,Jenson Button,Honda
+2006,driver,7,30.0,0,barrichello,Rubens Barrichello,Honda
+2006,driver,8,26.0,0,montoya,Juan Pablo Montoya,McLaren
+2006,driver,9,23.0,0,heidfeld,Nick Heidfeld,BMW Sauber
+2006,driver,10,20.0,0,ralf_schumacher,Ralf Schumacher,Toyota
+2006,driver,11,19.0,0,rosa,Pedro de la Rosa,McLaren
+2006,driver,12,15.0,0,trulli,Jarno Trulli,Toyota
+2006,driver,13,14.0,0,coulthard,David Coulthard,Red Bull
+2006,driver,14,7.0,0,webber,Mark Webber,Williams
+2006,driver,15,7.0,0,villeneuve,Jacques Villeneuve,BMW Sauber
+2006,driver,16,6.0,0,kubica,Robert Kubica,BMW Sauber
+2006,driver,17,4.0,0,rosberg,Nico Rosberg,Williams
+2006,driver,18,2.0,0,klien,Christian Klien,Red Bull
+2006,driver,19,1.0,0,liuzzi,Vitantonio Liuzzi,Toro Rosso
+2006,driver,20,0.0,0,speed,Scott Speed,Toro Rosso
+2006,driver,21,0.0,0,monteiro,Tiago Monteiro,Spyker MF1
+2006,driver,22,0.0,0,albers,Christijan Albers,Spyker MF1
+2006,driver,23,0.0,0,sato,Takuma Sato,Super Aguri
+2006,driver,24,0.0,0,doornbos,Robert Doornbos,Red Bull
+2006,driver,25,0.0,0,ide,Yuji Ide,Super Aguri
+2006,driver,26,0.0,0,yamamoto,Sakon Yamamoto,Super Aguri
+2006,driver,27,0.0,0,montagny,Franck Montagny,Super Aguri
+2006,constructor,1,206.0,8,renault,Renault,
+2006,constructor,2,201.0,9,ferrari,Ferrari,
+2006,constructor,3,110.0,0,mclaren,McLaren,
+2006,constructor,4,86.0,1,honda,Honda,
+2006,constructor,5,36.0,0,bmw_sauber,BMW Sauber,
+2006,constructor,6,35.0,0,toyota,Toyota,
+2006,constructor,7,16.0,0,red_bull,Red Bull,
+2006,constructor,8,11.0,0,williams,Williams,
+2006,constructor,9,1.0,0,toro_rosso,Toro Rosso,
+2006,constructor,10,0.0,0,mf1,MF1,
+2006,constructor,11,0.0,0,super_aguri,Super Aguri,
+2006,constructor,12,0.0,0,spyker_mf1,Spyker MF1,
+2007,driver,1,110.0,6,raikkonen,Kimi Räikkönen,Ferrari
+2007,driver,2,109.0,4,hamilton,Lewis Hamilton,McLaren
+2007,driver,3,109.0,4,alonso,Fernando Alonso,McLaren
+2007,driver,4,94.0,3,massa,Felipe Massa,Ferrari
+2007,driver,5,61.0,0,heidfeld,Nick Heidfeld,BMW Sauber
+2007,driver,6,39.0,0,kubica,Robert Kubica,BMW Sauber
+2007,driver,7,30.0,0,kovalainen,Heikki Kovalainen,Renault
+2007,driver,8,21.0,0,fisichella,Giancarlo Fisichella,Renault
+2007,driver,9,20.0,0,rosberg,Nico Rosberg,Williams
+2007,driver,10,14.0,0,coulthard,David Coulthard,Red Bull
+2007,driver,11,13.0,0,wurz,Alexander Wurz,Williams
+2007,driver,12,10.0,0,webber,Mark Webber,Red Bull
+2007,driver,13,8.0,0,trulli,Jarno Trulli,Toyota
+2007,driver,14,6.0,0,vettel,Sebastian Vettel,Toro Rosso
+2007,driver,15,6.0,0,button,Jenson Button,Honda
+2007,driver,16,5.0,0,ralf_schumacher,Ralf Schumacher,Toyota
+2007,driver,17,4.0,0,sato,Takuma Sato,Super Aguri
+2007,driver,18,3.0,0,liuzzi,Vitantonio Liuzzi,Toro Rosso
+2007,driver,19,1.0,0,sutil,Adrian Sutil,Spyker
+2007,driver,20,0.0,0,barrichello,Rubens Barrichello,Honda
+2007,driver,21,0.0,0,speed,Scott Speed,Toro Rosso
+2007,driver,22,0.0,0,nakajima,Kazuki Nakajima,Williams
+2007,driver,23,0.0,0,davidson,Anthony Davidson,Super Aguri
+2007,driver,24,0.0,0,yamamoto,Sakon Yamamoto,Spyker
+2007,driver,25,0.0,0,albers,Christijan Albers,Spyker
+2007,driver,0,0.0,0,markus_winkelhock,Markus Winkelhock,Spyker
+2007,constructor,1,204.0,9,ferrari,Ferrari,
+2007,constructor,2,101.0,0,bmw_sauber,BMW Sauber,
+2007,constructor,3,51.0,0,renault,Renault,
+2007,constructor,4,33.0,0,williams,Williams,
+2007,constructor,5,24.0,0,red_bull,Red Bull,
+2007,constructor,6,13.0,0,toyota,Toyota,
+2007,constructor,7,8.0,0,toro_rosso,Toro Rosso,
+2007,constructor,8,6.0,0,honda,Honda,
+2007,constructor,9,4.0,0,super_aguri,Super Aguri,
+2007,constructor,10,1.0,0,spyker,Spyker,
+2007,constructor,0,0.0,8,mclaren,McLaren,
+2008,driver,1,98.0,5,hamilton,Lewis Hamilton,McLaren
+2008,driver,2,97.0,6,massa,Felipe Massa,Ferrari
+2008,driver,3,75.0,2,raikkonen,Kimi Räikkönen,Ferrari
+2008,driver,4,75.0,1,kubica,Robert Kubica,BMW Sauber
+2008,driver,5,61.0,2,alonso,Fernando Alonso,Renault
+2008,driver,6,60.0,0,heidfeld,Nick Heidfeld,BMW Sauber
+2008,driver,7,53.0,1,kovalainen,Heikki Kovalainen,McLaren
+2008,driver,8,35.0,1,vettel,Sebastian Vettel,Toro Rosso
+2008,driver,9,31.0,0,trulli,Jarno Trulli,Toyota
+2008,driver,10,25.0,0,glock,Timo Glock,Toyota
+2008,driver,11,21.0,0,webber,Mark Webber,Red Bull
+2008,driver,12,19.0,0,piquet_jr,Nelson Piquet Jr.,Renault
+2008,driver,13,17.0,0,rosberg,Nico Rosberg,Williams
+2008,driver,14,11.0,0,barrichello,Rubens Barrichello,Honda
+2008,driver,15,9.0,0,nakajima,Kazuki Nakajima,Williams
+2008,driver,16,8.0,0,coulthard,David Coulthard,Red Bull
+2008,driver,17,4.0,0,bourdais,Sébastien Bourdais,Toro Rosso
+2008,driver,18,3.0,0,button,Jenson Button,Honda
+2008,driver,19,0.0,0,fisichella,Giancarlo Fisichella,Force India
+2008,driver,20,0.0,0,sutil,Adrian Sutil,Force India
+2008,driver,21,0.0,0,sato,Takuma Sato,Super Aguri
+2008,driver,22,0.0,0,davidson,Anthony Davidson,Super Aguri
+2008,constructor,1,172.0,8,ferrari,Ferrari,
+2008,constructor,2,151.0,6,mclaren,McLaren,
+2008,constructor,3,135.0,1,bmw_sauber,BMW Sauber,
+2008,constructor,4,80.0,2,renault,Renault,
+2008,constructor,5,56.0,0,toyota,Toyota,
+2008,constructor,6,39.0,1,toro_rosso,Toro Rosso,
+2008,constructor,7,29.0,0,red_bull,Red Bull,
+2008,constructor,8,26.0,0,williams,Williams,
+2008,constructor,9,14.0,0,honda,Honda,
+2008,constructor,10,0.0,0,force_india,Force India,
+2008,constructor,11,0.0,0,super_aguri,Super Aguri,
+2009,driver,1,95.0,6,button,Jenson Button,Brawn
+2009,driver,2,84.0,4,vettel,Sebastian Vettel,Red Bull
+2009,driver,3,77.0,2,barrichello,Rubens Barrichello,Brawn
+2009,driver,4,69.5,2,webber,Mark Webber,Red Bull
+2009,driver,5,49.0,2,hamilton,Lewis Hamilton,McLaren
+2009,driver,6,48.0,1,raikkonen,Kimi Räikkönen,Ferrari
+2009,driver,7,34.5,0,rosberg,Nico Rosberg,Williams
+2009,driver,8,32.5,0,trulli,Jarno Trulli,Toyota
+2009,driver,9,26.0,0,alonso,Fernando Alonso,Renault
+2009,driver,10,24.0,0,glock,Timo Glock,Toyota
+2009,driver,11,22.0,0,massa,Felipe Massa,Ferrari
+2009,driver,12,22.0,0,kovalainen,Heikki Kovalainen,McLaren
+2009,driver,13,19.0,0,heidfeld,Nick Heidfeld,BMW Sauber
+2009,driver,14,17.0,0,kubica,Robert Kubica,BMW Sauber
+2009,driver,15,8.0,0,fisichella,Giancarlo Fisichella,Ferrari
+2009,driver,16,6.0,0,buemi,Sébastien Buemi,Toro Rosso
+2009,driver,17,5.0,0,sutil,Adrian Sutil,Force India
+2009,driver,18,3.0,0,kobayashi,Kamui Kobayashi,Toyota
+2009,driver,19,2.0,0,bourdais,Sébastien Bourdais,Toro Rosso
+2009,driver,20,0.0,0,nakajima,Kazuki Nakajima,Williams
+2009,driver,21,0.0,0,piquet_jr,Nelson Piquet Jr.,Renault
+2009,driver,22,0.0,0,liuzzi,Vitantonio Liuzzi,Force India
+2009,driver,23,0.0,0,grosjean,Romain Grosjean,Renault
+2009,driver,24,0.0,0,alguersuari,Jaime Alguersuari,Toro Rosso
+2009,driver,25,0.0,0,badoer,Luca Badoer,Ferrari
+2009,constructor,1,172.0,8,brawn,Brawn,
+2009,constructor,2,153.5,6,red_bull,Red Bull,
+2009,constructor,3,71.0,2,mclaren,McLaren,
+2009,constructor,4,70.0,1,ferrari,Ferrari,
+2009,constructor,5,59.5,0,toyota,Toyota,
+2009,constructor,6,36.0,0,bmw_sauber,BMW Sauber,
+2009,constructor,7,34.5,0,williams,Williams,
+2009,constructor,8,26.0,0,renault,Renault,
+2009,constructor,9,13.0,0,force_india,Force India,
+2009,constructor,10,8.0,0,toro_rosso,Toro Rosso,
+2010,driver,1,256.0,5,vettel,Sebastian Vettel,Red Bull
+2010,driver,2,252.0,5,alonso,Fernando Alonso,Ferrari
+2010,driver,3,242.0,4,webber,Mark Webber,Red Bull
+2010,driver,4,240.0,3,hamilton,Lewis Hamilton,McLaren
+2010,driver,5,214.0,2,button,Jenson Button,McLaren
+2010,driver,6,144.0,0,massa,Felipe Massa,Ferrari
+2010,driver,7,142.0,0,rosberg,Nico Rosberg,Mercedes
+2010,driver,8,136.0,0,kubica,Robert Kubica,Renault
+2010,driver,9,72.0,0,michael_schumacher,Michael Schumacher,Mercedes
+2010,driver,10,47.0,0,barrichello,Rubens Barrichello,Williams
+2010,driver,11,47.0,0,sutil,Adrian Sutil,Force India
+2010,driver,12,32.0,0,kobayashi,Kamui Kobayashi,Sauber
+2010,driver,13,27.0,0,petrov,Vitaly Petrov,Renault
+2010,driver,14,22.0,0,hulkenberg,Nico Hülkenberg,Williams
+2010,driver,15,21.0,0,liuzzi,Vitantonio Liuzzi,Force India
+2010,driver,16,8.0,0,buemi,Sébastien Buemi,Toro Rosso
+2010,driver,17,6.0,0,rosa,Pedro de la Rosa,Sauber
+2010,driver,18,6.0,0,heidfeld,Nick Heidfeld,Sauber
+2010,driver,19,5.0,0,alguersuari,Jaime Alguersuari,Toro Rosso
+2010,driver,20,0.0,0,kovalainen,Heikki Kovalainen,Lotus
+2010,driver,21,0.0,0,trulli,Jarno Trulli,Lotus
+2010,driver,22,0.0,0,chandhok,Karun Chandhok,HRT
+2010,driver,23,0.0,0,bruno_senna,Bruno Senna,HRT
+2010,driver,24,0.0,0,grassi,Lucas di Grassi,Virgin
+2010,driver,25,0.0,0,glock,Timo Glock,Virgin
+2010,driver,26,0.0,0,yamamoto,Sakon Yamamoto,HRT
+2010,driver,27,0.0,0,klien,Christian Klien,HRT
+2010,constructor,1,498.0,9,red_bull,Red Bull,
+2010,constructor,2,454.0,5,mclaren,McLaren,
+2010,constructor,3,396.0,5,ferrari,Ferrari,
+2010,constructor,4,214.0,0,mercedes,Mercedes,
+2010,constructor,5,163.0,0,renault,Renault,
+2010,constructor,6,69.0,0,williams,Williams,
+2010,constructor,7,68.0,0,force_india,Force India,
+2010,constructor,8,44.0,0,sauber,Sauber,
+2010,constructor,9,13.0,0,toro_rosso,Toro Rosso,
+2010,constructor,10,0.0,0,lotus_racing,Lotus,
+2010,constructor,11,0.0,0,hrt,HRT,
+2010,constructor,12,0.0,0,virgin,Virgin,
+2011,driver,1,392.0,11,vettel,Sebastian Vettel,Red Bull
+2011,driver,2,270.0,3,button,Jenson Button,McLaren
+2011,driver,3,258.0,1,webber,Mark Webber,Red Bull
+2011,driver,4,257.0,1,alonso,Fernando Alonso,Ferrari
+2011,driver,5,227.0,3,hamilton,Lewis Hamilton,McLaren
+2011,driver,6,118.0,0,massa,Felipe Massa,Ferrari
+2011,driver,7,89.0,0,rosberg,Nico Rosberg,Mercedes
+2011,driver,8,76.0,0,michael_schumacher,Michael Schumacher,Mercedes
+2011,driver,9,42.0,0,sutil,Adrian Sutil,Force India
+2011,driver,10,37.0,0,petrov,Vitaly Petrov,Renault
+2011,driver,11,34.0,0,heidfeld,Nick Heidfeld,Renault
+2011,driver,12,30.0,0,kobayashi,Kamui Kobayashi,Sauber
+2011,driver,13,27.0,0,resta,Paul di Resta,Force India
+2011,driver,14,26.0,0,alguersuari,Jaime Alguersuari,Toro Rosso
+2011,driver,15,15.0,0,buemi,Sébastien Buemi,Toro Rosso
+2011,driver,16,14.0,0,perez,Sergio Pérez,Sauber
+2011,driver,17,4.0,0,barrichello,Rubens Barrichello,Williams
+2011,driver,18,2.0,0,bruno_senna,Bruno Senna,Renault
+2011,driver,19,1.0,0,maldonado,Pastor Maldonado,Williams
+2011,driver,20,0.0,0,rosa,Pedro de la Rosa,Sauber
+2011,driver,21,0.0,0,trulli,Jarno Trulli,Lotus
+2011,driver,22,0.0,0,kovalainen,Heikki Kovalainen,Lotus
+2011,driver,23,0.0,0,liuzzi,Vitantonio Liuzzi,HRT
+2011,driver,24,0.0,0,ambrosio,Jérôme d'Ambrosio,Virgin
+2011,driver,25,0.0,0,glock,Timo Glock,Virgin
+2011,driver,26,0.0,0,karthikeyan,Narain Karthikeyan,HRT
+2011,driver,27,0.0,0,ricciardo,Daniel Ricciardo,HRT
+2011,driver,28,0.0,0,chandhok,Karun Chandhok,Lotus
+2011,constructor,1,650.0,12,red_bull,Red Bull,
+2011,constructor,2,497.0,6,mclaren,McLaren,
+2011,constructor,3,375.0,1,ferrari,Ferrari,
+2011,constructor,4,165.0,0,mercedes,Mercedes,
+2011,constructor,5,73.0,0,renault,Renault,
+2011,constructor,6,69.0,0,force_india,Force India,
+2011,constructor,7,44.0,0,sauber,Sauber,
+2011,constructor,8,41.0,0,toro_rosso,Toro Rosso,
+2011,constructor,9,5.0,0,williams,Williams,
+2011,constructor,10,0.0,0,lotus_racing,Lotus,
+2011,constructor,11,0.0,0,hrt,HRT,
+2011,constructor,12,0.0,0,virgin,Virgin,
+2012,driver,1,281.0,5,vettel,Sebastian Vettel,Red Bull
+2012,driver,2,278.0,3,alonso,Fernando Alonso,Ferrari
+2012,driver,3,207.0,1,raikkonen,Kimi Räikkönen,Lotus F1
+2012,driver,4,190.0,4,hamilton,Lewis Hamilton,McLaren
+2012,driver,5,188.0,3,button,Jenson Button,McLaren
+2012,driver,6,179.0,2,webber,Mark Webber,Red Bull
+2012,driver,7,122.0,0,massa,Felipe Massa,Ferrari
+2012,driver,8,96.0,0,grosjean,Romain Grosjean,Lotus F1
+2012,driver,9,93.0,1,rosberg,Nico Rosberg,Mercedes
+2012,driver,10,66.0,0,perez,Sergio Pérez,Sauber
+2012,driver,11,63.0,0,hulkenberg,Nico Hülkenberg,Force India
+2012,driver,12,60.0,0,kobayashi,Kamui Kobayashi,Sauber
+2012,driver,13,49.0,0,michael_schumacher,Michael Schumacher,Mercedes
+2012,driver,14,46.0,0,resta,Paul di Resta,Force India
+2012,driver,15,45.0,1,maldonado,Pastor Maldonado,Williams
+2012,driver,16,31.0,0,bruno_senna,Bruno Senna,Williams
+2012,driver,17,16.0,0,vergne,Jean-Éric Vergne,Toro Rosso
+2012,driver,18,10.0,0,ricciardo,Daniel Ricciardo,Toro Rosso
+2012,driver,19,0.0,0,petrov,Vitaly Petrov,Caterham
+2012,driver,20,0.0,0,glock,Timo Glock,Marussia
+2012,driver,21,0.0,0,pic,Charles Pic,Marussia
+2012,driver,22,0.0,0,kovalainen,Heikki Kovalainen,Caterham
+2012,driver,23,0.0,0,ambrosio,Jérôme d'Ambrosio,Lotus F1
+2012,driver,24,0.0,0,karthikeyan,Narain Karthikeyan,HRT
+2012,driver,25,0.0,0,rosa,Pedro de la Rosa,HRT
+2012,constructor,1,460.0,7,red_bull,Red Bull,
+2012,constructor,2,400.0,3,ferrari,Ferrari,
+2012,constructor,3,378.0,7,mclaren,McLaren,
+2012,constructor,4,303.0,1,lotus_f1,Lotus F1,
+2012,constructor,5,142.0,1,mercedes,Mercedes,
+2012,constructor,6,126.0,0,sauber,Sauber,
+2012,constructor,7,109.0,0,force_india,Force India,
+2012,constructor,8,76.0,1,williams,Williams,
+2012,constructor,9,26.0,0,toro_rosso,Toro Rosso,
+2012,constructor,10,0.0,0,caterham,Caterham,
+2012,constructor,11,0.0,0,marussia,Marussia,
+2012,constructor,12,0.0,0,hrt,HRT,
+2013,driver,1,397.0,13,vettel,Sebastian Vettel,Red Bull
+2013,driver,2,242.0,2,alonso,Fernando Alonso,Ferrari
+2013,driver,3,199.0,0,webber,Mark Webber,Red Bull
+2013,driver,4,189.0,1,hamilton,Lewis Hamilton,Mercedes
+2013,driver,5,183.0,1,raikkonen,Kimi Räikkönen,Lotus F1
+2013,driver,6,171.0,2,rosberg,Nico Rosberg,Mercedes
+2013,driver,7,132.0,0,grosjean,Romain Grosjean,Lotus F1
+2013,driver,8,112.0,0,massa,Felipe Massa,Ferrari
+2013,driver,9,73.0,0,button,Jenson Button,McLaren
+2013,driver,10,51.0,0,hulkenberg,Nico Hülkenberg,Sauber
+2013,driver,11,49.0,0,perez,Sergio Pérez,McLaren
+2013,driver,12,48.0,0,resta,Paul di Resta,Force India
+2013,driver,13,29.0,0,sutil,Adrian Sutil,Force India
+2013,driver,14,20.0,0,ricciardo,Daniel Ricciardo,Toro Rosso
+2013,driver,15,13.0,0,vergne,Jean-Éric Vergne,Toro Rosso
+2013,driver,16,6.0,0,gutierrez,Esteban Gutiérrez,Sauber
+2013,driver,17,4.0,0,bottas,Valtteri Bottas,Williams
+2013,driver,18,1.0,0,maldonado,Pastor Maldonado,Williams
+2013,driver,19,0.0,0,jules_bianchi,Jules Bianchi,Marussia
+2013,driver,20,0.0,0,pic,Charles Pic,Caterham
+2013,driver,21,0.0,0,garde,Giedo van der Garde,Caterham
+2013,driver,22,0.0,0,kovalainen,Heikki Kovalainen,Lotus F1
+2013,driver,23,0.0,0,chilton,Max Chilton,Marussia
+2013,constructor,1,596.0,13,red_bull,Red Bull,
+2013,constructor,2,360.0,3,mercedes,Mercedes,
+2013,constructor,3,354.0,2,ferrari,Ferrari,
+2013,constructor,4,315.0,1,lotus_f1,Lotus F1,
+2013,constructor,5,122.0,0,mclaren,McLaren,
+2013,constructor,6,77.0,0,force_india,Force India,
+2013,constructor,7,57.0,0,sauber,Sauber,
+2013,constructor,8,33.0,0,toro_rosso,Toro Rosso,
+2013,constructor,9,5.0,0,williams,Williams,
+2013,constructor,10,0.0,0,marussia,Marussia,
+2013,constructor,11,0.0,0,caterham,Caterham,
+2014,driver,1,384.0,11,hamilton,Lewis Hamilton,Mercedes
+2014,driver,2,317.0,5,rosberg,Nico Rosberg,Mercedes
+2014,driver,3,238.0,3,ricciardo,Daniel Ricciardo,Red Bull
+2014,driver,4,186.0,0,bottas,Valtteri Bottas,Williams
+2014,driver,5,167.0,0,vettel,Sebastian Vettel,Red Bull
+2014,driver,6,161.0,0,alonso,Fernando Alonso,Ferrari
+2014,driver,7,134.0,0,massa,Felipe Massa,Williams
+2014,driver,8,126.0,0,button,Jenson Button,McLaren
+2014,driver,9,96.0,0,hulkenberg,Nico Hülkenberg,Force India
+2014,driver,10,59.0,0,perez,Sergio Pérez,Force India
+2014,driver,11,55.0,0,kevin_magnussen,Kevin Magnussen,McLaren
+2014,driver,12,55.0,0,raikkonen,Kimi Räikkönen,Ferrari
+2014,driver,13,22.0,0,vergne,Jean-Éric Vergne,Toro Rosso
+2014,driver,14,8.0,0,grosjean,Romain Grosjean,Lotus F1
+2014,driver,15,8.0,0,kvyat,Daniil Kvyat,Toro Rosso
+2014,driver,16,2.0,0,maldonado,Pastor Maldonado,Lotus F1
+2014,driver,17,2.0,0,jules_bianchi,Jules Bianchi,Marussia
+2014,driver,18,0.0,0,sutil,Adrian Sutil,Sauber
+2014,driver,19,0.0,0,ericsson,Marcus Ericsson,Caterham
+2014,driver,20,0.0,0,gutierrez,Esteban Gutiérrez,Sauber
+2014,driver,21,0.0,0,chilton,Max Chilton,Marussia
+2014,driver,22,0.0,0,kobayashi,Kamui Kobayashi,Caterham
+2014,driver,23,0.0,0,stevens,Will Stevens,Caterham
+2014,driver,0,0.0,0,lotterer,André Lotterer,Caterham
+2014,constructor,1,701.0,16,mercedes,Mercedes,
+2014,constructor,2,405.0,3,red_bull,Red Bull,
+2014,constructor,3,320.0,0,williams,Williams,
+2014,constructor,4,216.0,0,ferrari,Ferrari,
+2014,constructor,5,181.0,0,mclaren,McLaren,
+2014,constructor,6,155.0,0,force_india,Force India,
+2014,constructor,7,30.0,0,toro_rosso,Toro Rosso,
+2014,constructor,8,10.0,0,lotus_f1,Lotus F1,
+2014,constructor,9,2.0,0,marussia,Marussia,
+2014,constructor,10,0.0,0,sauber,Sauber,
+2014,constructor,11,0.0,0,caterham,Caterham,
+2015,driver,1,381.0,10,hamilton,Lewis Hamilton,Mercedes
+2015,driver,2,322.0,6,rosberg,Nico Rosberg,Mercedes
+2015,driver,3,278.0,3,vettel,Sebastian Vettel,Ferrari
+2015,driver,4,150.0,0,raikkonen,Kimi Räikkönen,Ferrari
+2015,driver,5,136.0,0,bottas,Valtteri Bottas,Williams
+2015,driver,6,121.0,0,massa,Felipe Massa,Williams
+2015,driver,7,95.0,0,kvyat,Daniil Kvyat,Red Bull
+2015,driver,8,92.0,0,ricciardo,Daniel Ricciardo,Red Bull
+2015,driver,9,78.0,0,perez,Sergio Pérez,Force India
+2015,driver,10,58.0,0,hulkenberg,Nico Hülkenberg,Force India
+2015,driver,11,51.0,0,grosjean,Romain Grosjean,Lotus F1
+2015,driver,12,49.0,0,max_verstappen,Max Verstappen,Toro Rosso
+2015,driver,13,27.0,0,nasr,Felipe Nasr,Sauber
+2015,driver,14,27.0,0,maldonado,Pastor Maldonado,Lotus F1
+2015,driver,15,18.0,0,sainz,Carlos Sainz,Toro Rosso
+2015,driver,16,16.0,0,button,Jenson Button,McLaren
+2015,driver,17,11.0,0,alonso,Fernando Alonso,McLaren
+2015,driver,18,9.0,0,ericsson,Marcus Ericsson,Sauber
+2015,driver,19,0.0,0,merhi,Roberto Merhi,Manor Marussia
+2015,driver,20,0.0,0,rossi,Alexander Rossi,Manor Marussia
+2015,driver,21,0.0,0,stevens,Will Stevens,Manor Marussia
+2015,driver,0,0.0,0,kevin_magnussen,Kevin Magnussen,McLaren
+2015,constructor,1,703.0,16,mercedes,Mercedes,
+2015,constructor,2,428.0,3,ferrari,Ferrari,
+2015,constructor,3,257.0,0,williams,Williams,
+2015,constructor,4,187.0,0,red_bull,Red Bull,
+2015,constructor,5,136.0,0,force_india,Force India,
+2015,constructor,6,78.0,0,lotus_f1,Lotus F1,
+2015,constructor,7,67.0,0,toro_rosso,Toro Rosso,
+2015,constructor,8,36.0,0,sauber,Sauber,
+2015,constructor,9,27.0,0,mclaren,McLaren,
+2015,constructor,10,0.0,0,manor,Manor Marussia,
+2016,driver,1,385.0,9,rosberg,Nico Rosberg,Mercedes
+2016,driver,2,380.0,10,hamilton,Lewis Hamilton,Mercedes
+2016,driver,3,256.0,1,ricciardo,Daniel Ricciardo,Red Bull
+2016,driver,4,212.0,0,vettel,Sebastian Vettel,Ferrari
+2016,driver,5,204.0,1,max_verstappen,Max Verstappen,Red Bull
+2016,driver,6,186.0,0,raikkonen,Kimi Räikkönen,Ferrari
+2016,driver,7,101.0,0,perez,Sergio Pérez,Force India
+2016,driver,8,85.0,0,bottas,Valtteri Bottas,Williams
+2016,driver,9,72.0,0,hulkenberg,Nico Hülkenberg,Force India
+2016,driver,10,54.0,0,alonso,Fernando Alonso,McLaren
+2016,driver,11,53.0,0,massa,Felipe Massa,Williams
+2016,driver,12,46.0,0,sainz,Carlos Sainz,Toro Rosso
+2016,driver,13,29.0,0,grosjean,Romain Grosjean,Haas F1 Team
+2016,driver,14,25.0,0,kvyat,Daniil Kvyat,Toro Rosso
+2016,driver,15,21.0,0,button,Jenson Button,McLaren
+2016,driver,16,7.0,0,kevin_magnussen,Kevin Magnussen,Renault
+2016,driver,17,2.0,0,nasr,Felipe Nasr,Sauber
+2016,driver,18,1.0,0,jolyon_palmer,Jolyon Palmer,Renault
+2016,driver,19,1.0,0,wehrlein,Pascal Wehrlein,Manor Marussia
+2016,driver,20,1.0,0,vandoorne,Stoffel Vandoorne,McLaren
+2016,driver,21,0.0,0,gutierrez,Esteban Gutiérrez,Haas F1 Team
+2016,driver,22,0.0,0,ericsson,Marcus Ericsson,Sauber
+2016,driver,23,0.0,0,ocon,Esteban Ocon,Manor Marussia
+2016,driver,24,0.0,0,haryanto,Rio Haryanto,Manor Marussia
+2016,constructor,1,765.0,19,mercedes,Mercedes,
+2016,constructor,2,468.0,2,red_bull,Red Bull,
+2016,constructor,3,398.0,0,ferrari,Ferrari,
+2016,constructor,4,173.0,0,force_india,Force India,
+2016,constructor,5,138.0,0,williams,Williams,
+2016,constructor,6,76.0,0,mclaren,McLaren,
+2016,constructor,7,63.0,0,toro_rosso,Toro Rosso,
+2016,constructor,8,29.0,0,haas,Haas F1 Team,
+2016,constructor,9,8.0,0,renault,Renault,
+2016,constructor,10,2.0,0,sauber,Sauber,
+2016,constructor,11,1.0,0,manor,Manor Marussia,
+2017,driver,1,363.0,9,hamilton,Lewis Hamilton,Mercedes
+2017,driver,2,317.0,5,vettel,Sebastian Vettel,Ferrari
+2017,driver,3,305.0,3,bottas,Valtteri Bottas,Mercedes
+2017,driver,4,205.0,0,raikkonen,Kimi Räikkönen,Ferrari
+2017,driver,5,200.0,1,ricciardo,Daniel Ricciardo,Red Bull
+2017,driver,6,168.0,2,max_verstappen,Max Verstappen,Red Bull
+2017,driver,7,100.0,0,perez,Sergio Pérez,Force India
+2017,driver,8,87.0,0,ocon,Esteban Ocon,Force India
+2017,driver,9,54.0,0,sainz,Carlos Sainz,Renault
+2017,driver,10,43.0,0,hulkenberg,Nico Hülkenberg,Renault
+2017,driver,11,43.0,0,massa,Felipe Massa,Williams
+2017,driver,12,40.0,0,stroll,Lance Stroll,Williams
+2017,driver,13,28.0,0,grosjean,Romain Grosjean,Haas F1 Team
+2017,driver,14,19.0,0,kevin_magnussen,Kevin Magnussen,Haas F1 Team
+2017,driver,15,17.0,0,alonso,Fernando Alonso,McLaren
+2017,driver,16,13.0,0,vandoorne,Stoffel Vandoorne,McLaren
+2017,driver,17,8.0,0,jolyon_palmer,Jolyon Palmer,Renault
+2017,driver,18,5.0,0,wehrlein,Pascal Wehrlein,Sauber
+2017,driver,19,5.0,0,kvyat,Daniil Kvyat,Toro Rosso
+2017,driver,20,0.0,0,ericsson,Marcus Ericsson,Sauber
+2017,driver,21,0.0,0,gasly,Pierre Gasly,Toro Rosso
+2017,driver,22,0.0,0,giovinazzi,Antonio Giovinazzi,Sauber
+2017,driver,23,0.0,0,brendon_hartley,Brendon Hartley,Toro Rosso
+2017,driver,0,0.0,0,button,Jenson Button,McLaren
+2017,driver,0,0.0,0,resta,Paul di Resta,Williams
+2017,constructor,1,668.0,12,mercedes,Mercedes,
+2017,constructor,2,522.0,5,ferrari,Ferrari,
+2017,constructor,3,368.0,3,red_bull,Red Bull,
+2017,constructor,4,187.0,0,force_india,Force India,
+2017,constructor,5,83.0,0,williams,Williams,
+2017,constructor,6,57.0,0,renault,Renault,
+2017,constructor,7,53.0,0,toro_rosso,Toro Rosso,
+2017,constructor,8,47.0,0,haas,Haas F1 Team,
+2017,constructor,9,30.0,0,mclaren,McLaren,
+2017,constructor,10,5.0,0,sauber,Sauber,
+2018,driver,1,408.0,11,hamilton,Lewis Hamilton,Mercedes
+2018,driver,2,320.0,5,vettel,Sebastian Vettel,Ferrari
+2018,driver,3,251.0,1,raikkonen,Kimi Räikkönen,Ferrari
+2018,driver,4,249.0,2,max_verstappen,Max Verstappen,Red Bull
+2018,driver,5,247.0,0,bottas,Valtteri Bottas,Mercedes
+2018,driver,6,170.0,2,ricciardo,Daniel Ricciardo,Red Bull
+2018,driver,7,69.0,0,hulkenberg,Nico Hülkenberg,Renault
+2018,driver,8,62.0,0,perez,Sergio Pérez,Force India
+2018,driver,9,56.0,0,kevin_magnussen,Kevin Magnussen,Haas F1 Team
+2018,driver,10,53.0,0,sainz,Carlos Sainz,Renault
+2018,driver,11,50.0,0,alonso,Fernando Alonso,McLaren
+2018,driver,12,49.0,0,ocon,Esteban Ocon,Force India
+2018,driver,13,39.0,0,leclerc,Charles Leclerc,Sauber
+2018,driver,14,37.0,0,grosjean,Romain Grosjean,Haas F1 Team
+2018,driver,15,29.0,0,gasly,Pierre Gasly,Toro Rosso
+2018,driver,16,12.0,0,vandoorne,Stoffel Vandoorne,McLaren
+2018,driver,17,9.0,0,ericsson,Marcus Ericsson,Sauber
+2018,driver,18,6.0,0,stroll,Lance Stroll,Williams
+2018,driver,19,4.0,0,brendon_hartley,Brendon Hartley,Toro Rosso
+2018,driver,20,1.0,0,sirotkin,Sergey Sirotkin,Williams
+2018,constructor,1,655.0,11,mercedes,Mercedes,
+2018,constructor,2,571.0,6,ferrari,Ferrari,
+2018,constructor,3,419.0,4,red_bull,Red Bull,
+2018,constructor,4,122.0,0,renault,Renault,
+2018,constructor,5,111.0,0,force_india,Force India,
+2018,constructor,6,93.0,0,haas,Haas F1 Team,
+2018,constructor,7,62.0,0,mclaren,McLaren,
+2018,constructor,8,48.0,0,sauber,Sauber,
+2018,constructor,9,33.0,0,toro_rosso,Toro Rosso,
+2018,constructor,10,7.0,0,williams,Williams,
+2019,driver,1,413.0,11,hamilton,Lewis Hamilton,Mercedes
+2019,driver,2,326.0,4,bottas,Valtteri Bottas,Mercedes
+2019,driver,3,278.0,3,max_verstappen,Max Verstappen,Red Bull
+2019,driver,4,264.0,2,leclerc,Charles Leclerc,Ferrari
+2019,driver,5,240.0,1,vettel,Sebastian Vettel,Ferrari
+2019,driver,6,96.0,0,sainz,Carlos Sainz,McLaren
+2019,driver,7,95.0,0,gasly,Pierre Gasly,Toro Rosso
+2019,driver,8,92.0,0,albon,Alexander Albon,Red Bull
+2019,driver,9,54.0,0,ricciardo,Daniel Ricciardo,Renault
+2019,driver,10,52.0,0,perez,Sergio Pérez,Racing Point
+2019,driver,11,49.0,0,norris,Lando Norris,McLaren
+2019,driver,12,43.0,0,raikkonen,Kimi Räikkönen,Alfa Romeo
+2019,driver,13,37.0,0,kvyat,Daniil Kvyat,Toro Rosso
+2019,driver,14,37.0,0,hulkenberg,Nico Hülkenberg,Renault
+2019,driver,15,21.0,0,stroll,Lance Stroll,Racing Point
+2019,driver,16,20.0,0,kevin_magnussen,Kevin Magnussen,Haas F1 Team
+2019,driver,17,14.0,0,giovinazzi,Antonio Giovinazzi,Alfa Romeo
+2019,driver,18,8.0,0,grosjean,Romain Grosjean,Haas F1 Team
+2019,driver,19,1.0,0,kubica,Robert Kubica,Williams
+2019,driver,20,0.0,0,russell,George Russell,Williams
+2019,constructor,1,739.0,15,mercedes,Mercedes,
+2019,constructor,2,504.0,3,ferrari,Ferrari,
+2019,constructor,3,417.0,3,red_bull,Red Bull,
+2019,constructor,4,145.0,0,mclaren,McLaren,
+2019,constructor,5,91.0,0,renault,Renault,
+2019,constructor,6,85.0,0,toro_rosso,Toro Rosso,
+2019,constructor,7,73.0,0,racing_point,Racing Point,
+2019,constructor,8,57.0,0,alfa,Alfa Romeo,
+2019,constructor,9,28.0,0,haas,Haas F1 Team,
+2019,constructor,10,1.0,0,williams,Williams,
+2020,driver,1,347.0,11,hamilton,Lewis Hamilton,Mercedes
+2020,driver,2,223.0,2,bottas,Valtteri Bottas,Mercedes
+2020,driver,3,214.0,2,max_verstappen,Max Verstappen,Red Bull
+2020,driver,4,125.0,1,perez,Sergio Pérez,Racing Point
+2020,driver,5,119.0,0,ricciardo,Daniel Ricciardo,Renault
+2020,driver,6,105.0,0,sainz,Carlos Sainz,McLaren
+2020,driver,7,105.0,0,albon,Alexander Albon,Red Bull
+2020,driver,8,98.0,0,leclerc,Charles Leclerc,Ferrari
+2020,driver,9,97.0,0,norris,Lando Norris,McLaren
+2020,driver,10,75.0,1,gasly,Pierre Gasly,AlphaTauri
+2020,driver,11,75.0,0,stroll,Lance Stroll,Racing Point
+2020,driver,12,62.0,0,ocon,Esteban Ocon,Renault
+2020,driver,13,33.0,0,vettel,Sebastian Vettel,Ferrari
+2020,driver,14,32.0,0,kvyat,Daniil Kvyat,AlphaTauri
+2020,driver,15,10.0,0,hulkenberg,Nico Hülkenberg,Racing Point
+2020,driver,16,4.0,0,raikkonen,Kimi Räikkönen,Alfa Romeo
+2020,driver,17,4.0,0,giovinazzi,Antonio Giovinazzi,Alfa Romeo
+2020,driver,18,3.0,0,russell,George Russell,Mercedes
+2020,driver,19,2.0,0,grosjean,Romain Grosjean,Haas F1 Team
+2020,driver,20,1.0,0,kevin_magnussen,Kevin Magnussen,Haas F1 Team
+2020,driver,21,0.0,0,latifi,Nicholas Latifi,Williams
+2020,driver,22,0.0,0,aitken,Jack Aitken,Williams
+2020,driver,23,0.0,0,pietro_fittipaldi,Pietro Fittipaldi,Haas F1 Team
+2020,constructor,1,573.0,13,mercedes,Mercedes,
+2020,constructor,2,319.0,2,red_bull,Red Bull,
+2020,constructor,3,202.0,0,mclaren,McLaren,
+2020,constructor,4,195.0,1,racing_point,Racing Point,
+2020,constructor,5,181.0,0,renault,Renault,
+2020,constructor,6,131.0,0,ferrari,Ferrari,
+2020,constructor,7,107.0,1,alphatauri,AlphaTauri,
+2020,constructor,8,8.0,0,alfa,Alfa Romeo,
+2020,constructor,9,3.0,0,haas,Haas F1 Team,
+2020,constructor,10,0.0,0,williams,Williams,
+2021,driver,1,395.5,10,max_verstappen,Max Verstappen,Red Bull
+2021,driver,2,387.5,8,hamilton,Lewis Hamilton,Mercedes
+2021,driver,3,226.0,1,bottas,Valtteri Bottas,Mercedes
+2021,driver,4,190.0,1,perez,Sergio Pérez,Red Bull
+2021,driver,5,164.5,0,sainz,Carlos Sainz,Ferrari
+2021,driver,6,160.0,0,norris,Lando Norris,McLaren
+2021,driver,7,159.0,0,leclerc,Charles Leclerc,Ferrari
+2021,driver,8,115.0,1,ricciardo,Daniel Ricciardo,McLaren
+2021,driver,9,110.0,0,gasly,Pierre Gasly,AlphaTauri
+2021,driver,10,81.0,0,alonso,Fernando Alonso,Alpine F1 Team
+2021,driver,11,74.0,1,ocon,Esteban Ocon,Alpine F1 Team
+2021,driver,12,43.0,0,vettel,Sebastian Vettel,Aston Martin
+2021,driver,13,34.0,0,stroll,Lance Stroll,Aston Martin
+2021,driver,14,32.0,0,tsunoda,Yuki Tsunoda,AlphaTauri
+2021,driver,15,16.0,0,russell,George Russell,Williams
+2021,driver,16,10.0,0,raikkonen,Kimi Räikkönen,Alfa Romeo
+2021,driver,17,7.0,0,latifi,Nicholas Latifi,Williams
+2021,driver,18,3.0,0,giovinazzi,Antonio Giovinazzi,Alfa Romeo
+2021,driver,19,0.0,0,mick_schumacher,Mick Schumacher,Haas F1 Team
+2021,driver,20,0.0,0,kubica,Robert Kubica,Alfa Romeo
+2021,driver,21,0.0,0,mazepin,Nikita Mazepin,Haas F1 Team
+2021,constructor,1,613.5,9,mercedes,Mercedes,
+2021,constructor,2,585.5,11,red_bull,Red Bull,
+2021,constructor,3,323.5,0,ferrari,Ferrari,
+2021,constructor,4,275.0,1,mclaren,McLaren,
+2021,constructor,5,155.0,1,alpine,Alpine F1 Team,
+2021,constructor,6,142.0,0,alphatauri,AlphaTauri,
+2021,constructor,7,77.0,0,aston_martin,Aston Martin,
+2021,constructor,8,23.0,0,williams,Williams,
+2021,constructor,9,13.0,0,alfa,Alfa Romeo,
+2021,constructor,10,0.0,0,haas,Haas F1 Team,
+2022,driver,1,454.0,15,max_verstappen,Max Verstappen,Red Bull
+2022,driver,2,308.0,3,leclerc,Charles Leclerc,Ferrari
+2022,driver,3,305.0,2,perez,Sergio Pérez,Red Bull
+2022,driver,4,275.0,1,russell,George Russell,Mercedes
+2022,driver,5,246.0,1,sainz,Carlos Sainz,Ferrari
+2022,driver,6,240.0,0,hamilton,Lewis Hamilton,Mercedes
+2022,driver,7,122.0,0,norris,Lando Norris,McLaren
+2022,driver,8,92.0,0,ocon,Esteban Ocon,Alpine F1 Team
+2022,driver,9,81.0,0,alonso,Fernando Alonso,Alpine F1 Team
+2022,driver,10,49.0,0,bottas,Valtteri Bottas,Alfa Romeo
+2022,driver,11,37.0,0,ricciardo,Daniel Ricciardo,McLaren
+2022,driver,12,37.0,0,vettel,Sebastian Vettel,Aston Martin
+2022,driver,13,25.0,0,kevin_magnussen,Kevin Magnussen,Haas F1 Team
+2022,driver,14,23.0,0,gasly,Pierre Gasly,AlphaTauri
+2022,driver,15,18.0,0,stroll,Lance Stroll,Aston Martin
+2022,driver,16,12.0,0,mick_schumacher,Mick Schumacher,Haas F1 Team
+2022,driver,17,12.0,0,tsunoda,Yuki Tsunoda,AlphaTauri
+2022,driver,18,6.0,0,zhou,Guanyu Zhou,Alfa Romeo
+2022,driver,19,4.0,0,albon,Alexander Albon,Williams
+2022,driver,20,2.0,0,latifi,Nicholas Latifi,Williams
+2022,driver,21,2.0,0,de_vries,Nyck de Vries,Williams
+2022,driver,22,0.0,0,hulkenberg,Nico Hülkenberg,Aston Martin
+2022,constructor,1,759.0,17,red_bull,Red Bull,
+2022,constructor,2,554.0,4,ferrari,Ferrari,
+2022,constructor,3,515.0,1,mercedes,Mercedes,
+2022,constructor,4,173.0,0,alpine,Alpine F1 Team,
+2022,constructor,5,159.0,0,mclaren,McLaren,
+2022,constructor,6,55.0,0,alfa,Alfa Romeo,
+2022,constructor,7,55.0,0,aston_martin,Aston Martin,
+2022,constructor,8,37.0,0,haas,Haas F1 Team,
+2022,constructor,9,35.0,0,alphatauri,AlphaTauri,
+2022,constructor,10,8.0,0,williams,Williams,
+2023,driver,1,575.0,19,max_verstappen,Max Verstappen,Red Bull
+2023,driver,2,285.0,2,perez,Sergio Pérez,Red Bull
+2023,driver,3,234.0,0,hamilton,Lewis Hamilton,Mercedes
+2023,driver,4,206.0,0,alonso,Fernando Alonso,Aston Martin
+2023,driver,5,206.0,0,leclerc,Charles Leclerc,Ferrari
+2023,driver,6,205.0,0,norris,Lando Norris,McLaren
+2023,driver,7,200.0,1,sainz,Carlos Sainz,Ferrari
+2023,driver,8,175.0,0,russell,George Russell,Mercedes
+2023,driver,9,97.0,0,piastri,Oscar Piastri,McLaren
+2023,driver,10,74.0,0,stroll,Lance Stroll,Aston Martin
+2023,driver,11,62.0,0,gasly,Pierre Gasly,Alpine F1 Team
+2023,driver,12,58.0,0,ocon,Esteban Ocon,Alpine F1 Team
+2023,driver,13,27.0,0,albon,Alexander Albon,Williams
+2023,driver,14,17.0,0,tsunoda,Yuki Tsunoda,AlphaTauri
+2023,driver,15,10.0,0,bottas,Valtteri Bottas,Alfa Romeo
+2023,driver,16,9.0,0,hulkenberg,Nico Hülkenberg,Haas F1 Team
+2023,driver,17,6.0,0,ricciardo,Daniel Ricciardo,AlphaTauri
+2023,driver,18,6.0,0,zhou,Guanyu Zhou,Alfa Romeo
+2023,driver,19,3.0,0,kevin_magnussen,Kevin Magnussen,Haas F1 Team
+2023,driver,20,2.0,0,lawson,Liam Lawson,AlphaTauri
+2023,driver,21,1.0,0,sargeant,Logan Sargeant,Williams
+2023,driver,22,0.0,0,de_vries,Nyck de Vries,AlphaTauri
+2023,constructor,1,860.0,21,red_bull,Red Bull,
+2023,constructor,2,409.0,0,mercedes,Mercedes,
+2023,constructor,3,406.0,1,ferrari,Ferrari,
+2023,constructor,4,302.0,0,mclaren,McLaren,
+2023,constructor,5,280.0,0,aston_martin,Aston Martin,
+2023,constructor,6,120.0,0,alpine,Alpine F1 Team,
+2023,constructor,7,28.0,0,williams,Williams,
+2023,constructor,8,25.0,0,alphatauri,AlphaTauri,
+2023,constructor,9,16.0,0,alfa,Alfa Romeo,
+2023,constructor,10,12.0,0,haas,Haas F1 Team,
+2024,driver,1,437.0,9,max_verstappen,Max Verstappen,Red Bull
+2024,driver,2,374.0,4,norris,Lando Norris,McLaren
+2024,driver,3,356.0,3,leclerc,Charles Leclerc,Ferrari
+2024,driver,4,292.0,2,piastri,Oscar Piastri,McLaren
+2024,driver,5,290.0,2,sainz,Carlos Sainz,Ferrari
+2024,driver,6,245.0,2,russell,George Russell,Mercedes
+2024,driver,7,223.0,2,hamilton,Lewis Hamilton,Mercedes
+2024,driver,8,152.0,0,perez,Sergio Pérez,Red Bull
+2024,driver,9,70.0,0,alonso,Fernando Alonso,Aston Martin
+2024,driver,10,42.0,0,gasly,Pierre Gasly,Alpine F1 Team
+2024,driver,11,41.0,0,hulkenberg,Nico Hülkenberg,Haas F1 Team
+2024,driver,12,30.0,0,tsunoda,Yuki Tsunoda,RB F1 Team
+2024,driver,13,24.0,0,stroll,Lance Stroll,Aston Martin
+2024,driver,14,23.0,0,ocon,Esteban Ocon,Alpine F1 Team
+2024,driver,15,16.0,0,kevin_magnussen,Kevin Magnussen,Haas F1 Team
+2024,driver,16,12.0,0,albon,Alexander Albon,Williams
+2024,driver,17,12.0,0,ricciardo,Daniel Ricciardo,RB F1 Team
+2024,driver,18,7.0,0,bearman,Oliver Bearman,Haas F1 Team
+2024,driver,19,5.0,0,colapinto,Franco Colapinto,Williams
+2024,driver,20,4.0,0,zhou,Guanyu Zhou,Sauber
+2024,driver,21,4.0,0,lawson,Liam Lawson,RB F1 Team
+2024,driver,22,0.0,0,bottas,Valtteri Bottas,Sauber
+2024,driver,23,0.0,0,sargeant,Logan Sargeant,Williams
+2024,driver,24,0.0,0,doohan,Jack Doohan,Alpine F1 Team
+2024,constructor,1,666.0,6,mclaren,McLaren,
+2024,constructor,2,652.0,5,ferrari,Ferrari,
+2024,constructor,3,589.0,9,red_bull,Red Bull,
+2024,constructor,4,468.0,4,mercedes,Mercedes,
+2024,constructor,5,94.0,0,aston_martin,Aston Martin,
+2024,constructor,6,65.0,0,alpine,Alpine F1 Team,
+2024,constructor,7,58.0,0,haas,Haas F1 Team,
+2024,constructor,8,46.0,0,rb,RB F1 Team,
+2024,constructor,9,17.0,0,williams,Williams,
+2024,constructor,10,4.0,0,sauber,Sauber,
+2025,driver,1,423.0,7,norris,Lando Norris,McLaren
+2025,driver,2,421.0,8,max_verstappen,Max Verstappen,Red Bull
+2025,driver,3,410.0,7,piastri,Oscar Piastri,McLaren
+2025,driver,4,319.0,2,russell,George Russell,Mercedes
+2025,driver,5,242.0,0,leclerc,Charles Leclerc,Ferrari
+2025,driver,6,156.0,0,hamilton,Lewis Hamilton,Ferrari
+2025,driver,7,150.0,0,antonelli,Andrea Kimi Antonelli,Mercedes
+2025,driver,8,73.0,0,albon,Alexander Albon,Williams
+2025,driver,9,64.0,0,sainz,Carlos Sainz,Williams
+2025,driver,10,56.0,0,alonso,Fernando Alonso,Aston Martin
+2025,driver,11,51.0,0,hulkenberg,Nico Hülkenberg,Sauber
+2025,driver,12,51.0,0,hadjar,Isack Hadjar,RB F1 Team
+2025,driver,13,41.0,0,bearman,Oliver Bearman,Haas F1 Team
+2025,driver,14,38.0,0,lawson,Liam Lawson,RB F1 Team
+2025,driver,15,38.0,0,ocon,Esteban Ocon,Haas F1 Team
+2025,driver,16,33.0,0,stroll,Lance Stroll,Aston Martin
+2025,driver,17,33.0,0,tsunoda,Yuki Tsunoda,Red Bull
+2025,driver,18,22.0,0,gasly,Pierre Gasly,Alpine F1 Team
+2025,driver,19,19.0,0,bortoleto,Gabriel Bortoleto,Sauber
+2025,driver,20,0.0,0,colapinto,Franco Colapinto,Alpine F1 Team
+2025,driver,21,0.0,0,doohan,Jack Doohan,Alpine F1 Team
+2025,constructor,1,833.0,14,mclaren,McLaren,
+2025,constructor,2,469.0,2,mercedes,Mercedes,
+2025,constructor,3,451.0,8,red_bull,Red Bull,
+2025,constructor,4,398.0,0,ferrari,Ferrari,
+2025,constructor,5,137.0,0,williams,Williams,
+2025,constructor,6,92.0,0,rb,RB F1 Team,
+2025,constructor,7,89.0,0,aston_martin,Aston Martin,
+2025,constructor,8,79.0,0,haas,Haas F1 Team,
+2025,constructor,9,70.0,0,sauber,Sauber,
+2025,constructor,10,22.0,0,alpine,Alpine F1 Team,
+2026,driver,1,365.0,9,antonelli,Andrea Kimi Antonelli,Mercedes
+2026,driver,2,242.0,3,russell,George Russell,Mercedes
+2026,driver,3,241.0,1,hamilton,Lewis Hamilton,Ferrari
+2026,driver,4,236.0,2,max_verstappen,Max Verstappen,Red Bull
+2026,driver,5,233.0,1,leclerc,Charles Leclerc,Ferrari
+2026,driver,6,211.0,2,norris,Lando Norris,McLaren
+2026,driver,7,144.0,0,piastri,Oscar Piastri,McLaren
+2026,driver,8,105.0,0,hadjar,Isack Hadjar,Red Bull
+2026,driver,9,77.0,0,lawson,Liam Lawson,Red Bull
+2026,driver,10,42.0,0,gasly,Pierre Gasly,Alpine F1 Team
+2026,driver,11,38.0,0,arvid_lindblad,Arvid Lindblad,RB F1 Team
+2026,driver,12,27.0,0,colapinto,Franco Colapinto,Alpine F1 Team
+2026,driver,13,23.0,0,bearman,Oliver Bearman,Haas F1 Team
+2026,driver,14,13.0,0,hulkenberg,Nico Hülkenberg,Audi
+2026,driver,15,10.0,0,bortoleto,Gabriel Bortoleto,Audi
+2026,driver,16,7.0,0,ocon,Esteban Ocon,Haas F1 Team
+2026,driver,17,7.0,0,alonso,Fernando Alonso,Aston Martin
+2026,driver,18,7.0,0,sainz,Carlos Sainz,Williams
+2026,driver,19,5.0,0,albon,Alexander Albon,Williams
+2026,driver,20,1.0,0,tsunoda,Yuki Tsunoda,RB F1 Team
+2026,driver,21,0.0,0,stroll,Lance Stroll,Aston Martin
+2026,driver,22,0.0,0,bottas,Valtteri Bottas,Cadillac F1 Team
+2026,driver,23,0.0,0,perez,Sergio Pérez,Cadillac F1 Team
+2026,constructor,1,607.0,12,mercedes,Mercedes,
+2026,constructor,2,474.0,2,ferrari,Ferrari,
+2026,constructor,3,355.0,2,red_bull,Red Bull,
+2026,constructor,4,355.0,2,mclaren,McLaren,
+2026,constructor,5,102.0,0,rb,RB F1 Team,
+2026,constructor,6,69.0,0,alpine,Alpine F1 Team,
+2026,constructor,7,30.0,0,haas,Haas F1 Team,
+2026,constructor,8,23.0,0,audi,Audi,
+2026,constructor,9,12.0,0,williams,Williams,
+2026,constructor,10,7.0,0,aston_martin,Aston Martin,
+2026,constructor,11,0.0,0,cadillac,Cadillac F1 Team,
