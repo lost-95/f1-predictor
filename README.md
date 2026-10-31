@@ -43,6 +43,13 @@ Pagina **Fanta F1** (API `/api/fanta?min_price=3.0..4.0`, logica in `backend/fan
 ## Lingua e orari
 Il selettore in alto sceglie il paese: imposta la lingua (italiano, inglese, spagnolo; testi in `frontend/i18n.js`) e il fuso orario degli orari di partenza (Italia, Spagna, Messico, Regno Unito, USA costa est).
 
+## Versione online (lorenzosantarelli.com/f1-predictor)
+La versione pubblica è statica: nessun server Python.
+- `backend/export_static.py` precalcola tutte le risposte dell'API in file JSON (`dist/`); il frontend li legge quando trova `window.F1_STATIC`.
+- La GitHub Action `.github/workflows/update-site.yml` gira ogni 3 ore da venerdì a lunedì e una volta al giorno negli altri giorni: `backend/update.py` scarica solo le novità (ultima stagione, tempi giro delle gare nuove, meteo non definitivo), riaddestra i modelli solo se ci sono risultati nuovi, salva dati e modelli su `main` e pubblica il sito sul branch `site`.
+- Netlify pubblica il branch `site`; il sito principale lo inoltra su `/f1-predictor/`.
+- Per forzare un aggiornamento: GitHub → Actions → "Update data and site" → Run workflow (opzione per riaddestrare).
+
 ## Fonti dati
 - **Jolpica F1 API** (`api.jolpi.ca/ergast`): successore di Ergast, stesso schema del dataset Kaggle "Formula 1 World Championship", aggiornato alla stagione in corso. Nessuna chiave. Limite: ~500 richieste/ora (tutto viene salvato in `data/cache`).
 - **Open-Meteo**: archivio storico (rianalisi ERA5 di ECMWF, orario, dal 1940) per le gare passate; API di previsione per la prossima gara (fino a 16 giorni). Nessuna chiave. Valori alle coordinate del circuito nelle 2 ore di gara; prima del 2005 l'orario di partenza non è nei dati e si assume 14:00 locali.

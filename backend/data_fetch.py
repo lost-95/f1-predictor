@@ -118,79 +118,111 @@ def add_quali_gap(q: pd.DataFrame) -> pd.DataFrame:
     return q
 
 
-def build(refresh: bool = False):
+TABLES = ("races", "results", "qualifying", "standings")
+
+
+def season_rows(season: int, ttl) -> tuple[list, list, list, list]:
+    """(races, results, qualifying, standings) rows for one season."""
     race_rows, result_rows, quali_rows, standing_rows = [], [], [], []
+    print(f"Season {season}...", flush=True)
+    for race in fetch_schedule(season, ttl):
+        loc = race["Circuit"]["Location"]
+        race_rows.append({
+            "season": season,
+            "round": int(race["round"]),
+            "raceName": race["raceName"],
+            "date": race["date"],
+            "time": race.get("time", ""),
+            "circuitId": race["Circuit"]["circuitId"],
+            "circuitName": race["Circuit"]["circuitName"],
+            "locality": loc.get("locality", ""),
+            "country": loc.get("country", ""),
+            "lat": float(loc["lat"]),
+            "lng": float(loc["long"]),
+        })
+    for race in fetch_paginated(f"{season}/results.json", "Results", f"results_{season}", ttl):
+        rnd = int(race["round"])
+        for res in race["Results"]:
+            d, c = res["Driver"], res["Constructor"]
+            result_rows.append({
+                "season": season,
+                "round": rnd,
+                "driverId": d["driverId"],
+                "driverName": f'{d["givenName"]} {d["familyName"]}',
+                "driverCode": d.get("code", d["familyName"][:3].upper()),
+                "nationality": d.get("nationality", ""),
+                "constructorId": c["constructorId"],
+                "constructorName": c["name"],
+                "grid": int(res["grid"]),
+                "position": int(res["position"]),
+                "positionText": res["positionText"],
+                "points": float(res["points"]),
+                "laps": int(res["laps"]),
+                "status": res["status"],
+                "fastestLapRank": int(res.get("FastestLap", {}).get("rank", 0) or 0),
+            })
+    for race in fetch_paginated(f"{season}/qualifying.json", "QualifyingResults",
+                                f"qualifying_{season}", ttl):
+        for q in race["QualifyingResults"]:
+            quali_rows.append(quali_row(season, int(race["round"]), q))
+    # official standings (include sprint points, which race results alone do not)
+    for kind in ("driver", "constructor"):
+        data = get_json(f"{season}/{kind}standings.json", {"limit": 100},
+                        cache_name=f"{kind}standings_{season}", ttl=ttl)
+        lists = data["MRData"]["StandingsTable"]["StandingsLists"]
+        for st in (lists[0][f"{kind.capitalize()}Standings"] if lists else []):
+            row = {"season": season, "kind": kind, "position": int(st.get("position", 0) or 0),
+                   "points": float(st["points"]), "wins": int(st["wins"])}
+            if kind == "driver":
+                d = st["Driver"]
+                row.update(id=d["driverId"], name=f'{d["givenName"]} {d["familyName"]}',
+                           team=st["Constructors"][-1]["name"] if st["Constructors"] else "")
+            else:
+                row.update(id=st["Constructor"]["constructorId"], name=st["Constructor"]["name"], team="")
+            standing_rows.append(row)
+    return race_rows, result_rows, quali_rows, standing_rows
+
+
+def _save(frames: dict[str, pd.DataFrame]):
+    for name, df in frames.items():
+        df.to_csv(DATA / f"{name}.csv", index=False)
+    (DATA / "last_update.json").write_text(json.dumps({"f1": datetime.now().astimezone().isoformat(timespec="seconds")}))
+    print(f"Saved {len(frames['races'])} races, {len(frames['results'])} result rows.")
+
+
+def build(refresh: bool = False):
+    """Full download 2001..current season (past seasons come from the disk cache when present)."""
+    parts = []
     for season in range(FIRST_SEASON, CURRENT_SEASON + 1):
         ttl = (0 if refresh else CURRENT_TTL_SEC) if season >= CURRENT_SEASON else None
-        print(f"Season {season}...", flush=True)
-        for race in fetch_schedule(season, ttl):
-            loc = race["Circuit"]["Location"]
-            race_rows.append({
-                "season": season,
-                "round": int(race["round"]),
-                "raceName": race["raceName"],
-                "date": race["date"],
-                "time": race.get("time", ""),
-                "circuitId": race["Circuit"]["circuitId"],
-                "circuitName": race["Circuit"]["circuitName"],
-                "locality": loc.get("locality", ""),
-                "country": loc.get("country", ""),
-                "lat": float(loc["lat"]),
-                "lng": float(loc["long"]),
-            })
-        for race in fetch_paginated(f"{season}/results.json", "Results", f"results_{season}", ttl):
-            rnd = int(race["round"])
-            for res in race["Results"]:
-                d, c = res["Driver"], res["Constructor"]
-                result_rows.append({
-                    "season": season,
-                    "round": rnd,
-                    "driverId": d["driverId"],
-                    "driverName": f'{d["givenName"]} {d["familyName"]}',
-                    "driverCode": d.get("code", d["familyName"][:3].upper()),
-                    "nationality": d.get("nationality", ""),
-                    "constructorId": c["constructorId"],
-                    "constructorName": c["name"],
-                    "grid": int(res["grid"]),
-                    "position": int(res["position"]),
-                    "positionText": res["positionText"],
-                    "points": float(res["points"]),
-                    "laps": int(res["laps"]),
-                    "status": res["status"],
-                    "fastestLapRank": int(res.get("FastestLap", {}).get("rank", 0) or 0),
-                })
+        parts.append(season_rows(season, ttl))
+    frames = {name: pd.DataFrame([r for p in parts for r in p[i]]) for i, name in enumerate(TABLES)}
+    frames["qualifying"] = add_quali_gap(frames["qualifying"])
+    _save(frames)
+    return frames["races"], frames["results"]
 
-        for race in fetch_paginated(f"{season}/qualifying.json", "QualifyingResults",
-                                    f"qualifying_{season}", ttl):
-            for q in race["QualifyingResults"]:
-                quali_rows.append(quali_row(season, int(race["round"]), q))
-        # official standings (include sprint points, which race results alone do not)
-        for kind in ("driver", "constructor"):
-            data = get_json(f"{season}/{kind}standings.json", {"limit": 100},
-                            cache_name=f"{kind}standings_{season}", ttl=ttl)
-            lists = data["MRData"]["StandingsTable"]["StandingsLists"]
-            for st in (lists[0][f"{kind.capitalize()}Standings"] if lists else []):
-                row = {"season": season, "kind": kind, "position": int(st.get("position", 0) or 0),
-                       "points": float(st["points"]), "wins": int(st["wins"])}
-                if kind == "driver":
-                    d = st["Driver"]
-                    row.update(id=d["driverId"], name=f'{d["givenName"]} {d["familyName"]}',
-                               team=st["Constructors"][-1]["name"] if st["Constructors"] else "")
-                else:
-                    row.update(id=st["Constructor"]["constructorId"], name=st["Constructor"]["name"], team="")
-                standing_rows.append(row)
 
-    races = pd.DataFrame(race_rows)
-    results = pd.DataFrame(result_rows)
-    quali = add_quali_gap(pd.DataFrame(quali_rows))
-    races.to_csv(DATA / "races.csv", index=False)
-    results.to_csv(DATA / "results.csv", index=False)
-    quali.to_csv(DATA / "qualifying.csv", index=False)
-    pd.DataFrame(standing_rows).to_csv(DATA / "standings.csv", index=False)
-    (DATA / "last_update.json").write_text(json.dumps({"f1": datetime.now().isoformat(timespec="seconds")}))
-    print(f"Saved {len(races)} races, {len(results)} result rows.")
-    return races, results
+def update_recent():
+    """Incremental update: re-download only the latest season(s) and keep older rows from the CSVs.
+    Used by the scheduled GitHub Action, which starts without the disk cache."""
+    if not (DATA / "races.csv").exists():
+        return build()
+    old = {name: pd.read_csv(DATA / f"{name}.csv") for name in TABLES}
+    seasons = sorted({CURRENT_SEASON, int(old["races"].season.max())})
+    parts = [season_rows(s, ttl=0) for s in seasons]
+    frames = {}
+    for i, name in enumerate(TABLES):
+        new = pd.DataFrame([r for p in parts for r in p[i]])
+        if name == "qualifying":
+            new = add_quali_gap(new)
+        df = pd.concat([old[name][~old[name].season.isin(seasons)], new], ignore_index=True)
+        frames[name] = df.sort_values(["season", "round"] if "round" in df else ["season"], kind="stable")
+    _save(frames)
+    return frames["races"], frames["results"]
 
 
 if __name__ == "__main__":
-    build(refresh="--refresh" in sys.argv)
+    if "--recent" in sys.argv:
+        update_recent()
+    else:
+        build(refresh="--refresh" in sys.argv)

@@ -8,6 +8,9 @@ __pycache__/
 data/cache/
 data/ff1_cache/
 
+# Static build (published to the `site` branch by the GitHub Action)
+dist/
+
 # OS / editors
 .DS_Store
 Thumbs.db

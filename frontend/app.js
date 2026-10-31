@@ -1,7 +1,16 @@
 // ---------- helpers ----------
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
-const api = (p, opt) => fetch(p, opt).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
+// Static build (export_static.py): API responses are precomputed JSON files next to the page
+const STATIC = !!window.F1_STATIC;
+function apiPath(p) {
+  if (!STATIC) return p;
+  const u = new URL(p, 'http://x');
+  const parts = u.pathname.split('/').filter(Boolean).slice(1);  // drop "api"
+  if (parts[0] === 'next') return `api/next-${u.searchParams.get('scenario') || 'auto'}.json`;
+  return `api/${parts.join('-')}.json`;
+}
+const api = (p, opt) => fetch(apiPath(p), opt).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const store = {  // per-viewer preferences; works without storage too
   get(k) { try { return localStorage.getItem(k); } catch { return null; } },
@@ -186,24 +195,40 @@ $('#scenario').onclick = e => {
 };
 
 // ---------- FANTA F1 ----------
-let fantaData = null, fantaMin = null, fantaReq = 0;
+let fantaBase = null, fantaData = null, fantaMin = null;
 let fantaSub = ['prices', 'drivers', 'teams'].includes(store.get('f1-fanta-sub')) ? store.get('f1-fanta-sub') : 'prices';
 let picks = { race: null, drivers: [], teams: [] };
 
 async function loadFanta() {
-  if (!fantaData) { $('#fanta-loading').hidden = false; $('#fanta-loading').textContent = t('fanta.loading'); }
-  const req = ++fantaReq;
+  if (!fantaBase) { $('#fanta-loading').hidden = false; $('#fanta-loading').textContent = t('fanta.loading'); }
   let d;
-  try { d = await api('/api/fanta' + (fantaMin == null ? '' : '?min_price=' + fantaMin.toFixed(1))); }
+  try { d = await api('/api/fanta'); }
   catch (e) { $('#fanta-loading').hidden = false; $('#fanta-loading').textContent = t('fanta.error', { e: e.message }); return; }
-  if (req !== fantaReq) return;  // a newer slider value is already loading
   if (!d.race) { $('#fanta-loading').textContent = t('season_over'); return; }
-  fantaData = d;
+  fantaBase = d;
+  fantaData = reprice(d, fantaMin);
   loadPicks(`${d.race.season}-${d.race.round}`);
   $('#fanta-loading').hidden = true;
   $('#fanta-content').hidden = false;
   renderPrices();
   showFantaSub();
+}
+// Driver prices for a chosen minimum price (same rule as fanta.prices in the backend):
+// top value = 30, lowest value = minimum price, everyone else linear in between, one decimal.
+function reprice(base, min) {
+  const vals = base.drivers.map(x => x.value), lo = Math.min(...vals), hi = Math.max(...vals);
+  const [a, b] = base.min_price_range;
+  const pMin = min == null ? base.min_price_auto : Math.min(b, Math.max(a, Math.round(min * 10) / 10));
+  const drivers = base.drivers.map(x => ({
+    ...x, price: hi > lo ? Math.round((pMin + (base.top_price - pMin) * (x.value - lo) / (hi - lo)) * 10) / 10 : base.top_price,
+  })).sort((x, y) => y.price - x.price || y.value - x.value);
+  return { ...base, drivers, min_price: pMin };
+}
+function applyMinPrice() {
+  fantaData = reprice(fantaBase, fantaMin);
+  renderPrices();
+  renderBuilder();
+  renderBadges();
 }
 
 function renderPrices() {
@@ -242,13 +267,8 @@ function renderPrices() {
     pt.race.map((v, i) => `<tr><td class="num">${i + 1}</td><td class="num">${num(pt.quali[i], 2)}</td><td class="num">${num(v, 2)}</td></tr>`).join('') + '</tbody>';
 }
 
-let fantaTimer;
-$('#fanta-min').oninput = e => {
-  fantaMin = +e.target.value;
-  $('#fanta-min-val').textContent = coins(fantaMin);
-  clearTimeout(fantaTimer); fantaTimer = setTimeout(loadFanta, 150);
-};
-$('#fanta-auto').onclick = () => { fantaMin = null; loadFanta(); };
+$('#fanta-min').oninput = e => { fantaMin = +e.target.value; applyMinPrice(); };
+$('#fanta-auto').onclick = () => { fantaMin = null; applyMinPrice(); };
 $('#fanta-menu').onclick = e => {
   const b = e.target.closest('button[data-sub]'); if (!b) return;
   fantaSub = b.dataset.sub;
@@ -546,12 +566,18 @@ async function loadModel() {
 }
 async function pollStatus() {
   const s = await api('/api/status');
+  const f = v => v ? new Date(v).toLocaleString(C().locale, { dateStyle: 'medium', timeStyle: 'short' }) : '–';
+  if (STATIC) {  // updated by a scheduled job: no refresh button
+    $('#refresh-btn').hidden = true;
+    $('#refresh-status').textContent = t('status.auto', { d: f(s.last_update?.f1), g: f(s.generated_at) });
+    return;
+  }
   const r = s.refresh;
   $('#refresh-btn').disabled = r.running;
   $('#refresh-status').textContent = r.running ? t('status.running', { s: r.step }) : r.error ? t('status.error', { e: r.error })
-    : t('status.updated', { d: (s.last_update?.f1 || '').replace('T', ' ') }) + (r.finished_at ? t('status.last', { d: r.finished_at }) : '');
+    : t('status.updated', { d: f(s.last_update?.f1) }) + (r.finished_at ? t('status.last', { d: r.finished_at }) : '');
   if (r.running) setTimeout(pollStatus, 3000);
-  else if (r.finished_at) { loaded.next = loaded.fanta = loaded.history = loaded.teams = false; fantaData = null; }
+  else if (r.finished_at) { loaded.next = loaded.fanta = loaded.history = loaded.teams = false; fantaBase = null; }
 }
 $('#refresh-btn').onclick = async () => {
   await api('/api/refresh', { method: 'POST' });

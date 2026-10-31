@@ -89,16 +89,36 @@ def pace_from_laps(laps: pd.DataFrame) -> pd.DataFrame:
     return p[["driverId", "pace_gap", "clean_laps"]]
 
 
+TABLE = DATA / "race_pace.csv"
+DONE = DATA / "race_pace_races.json"  # races already processed (some give no clean laps, e.g. Spa 2021)
+COLUMNS = ["driverId", "pace_gap", "clean_laps", "season", "round"]
+
+
+def _done() -> set[tuple[int, int]]:
+    done = {tuple(x) for x in json.loads(DONE.read_text())} if DONE.exists() else set()
+    if TABLE.exists():
+        done |= set(pd.read_csv(TABLE)[["season", "round"]].drop_duplicates().itertuples(index=False, name=None))
+    return {(int(s), int(r)) for s, r in done}
+
+
 def build_table() -> pd.DataFrame:
-    """Rebuild data/race_pace.csv from every cached race."""
-    out = []
+    """Rebuild data/race_pace.csv: races in the lap cache are recomputed, the others are kept
+    from the existing table (the GitHub Action runs without the old lap cache)."""
+    out, cached = [], set()
     for f in CACHE.glob("laps_*.json"):
         _, s, r = f.stem.split("_")
+        cached.add((int(s), int(r)))
         p = pace_from_laps(pd.DataFrame(json.loads(f.read_text())))
         out.append(p.assign(season=int(s), round=int(r)))
-    df = pd.concat(out, ignore_index=True) if out else pd.DataFrame(
-        columns=["driverId", "pace_gap", "clean_laps", "season", "round"])
-    df.to_csv(DATA / "race_pace.csv", index=False)
+    if TABLE.exists():
+        old = pd.read_csv(TABLE)
+        keep = [(s, r) not in cached for s, r in zip(old.season, old["round"])]
+        out.append(old[keep])
+    df = pd.concat(out, ignore_index=True)[COLUMNS] if out else pd.DataFrame(columns=COLUMNS)
+    df = df.sort_values(["season", "round", "pace_gap"]).reset_index(drop=True)
+    done = sorted(_done() | cached)
+    df.to_csv(TABLE, index=False)
+    DONE.write_text(json.dumps([list(x) for x in done]))
     return df
 
 
@@ -106,8 +126,9 @@ def download(first: int, last: int):
     results = pd.read_csv(DATA / "results.csv")
     races = results[(results.season >= first) & (results.season <= last)][["season", "round"]] \
         .drop_duplicates().sort_values(["season", "round"], ascending=False)
+    done = _done()
     todo = [(s, r) for s, r in races.itertuples(index=False)
-            if not (CACHE / f"laps_{s}_{r}.json").exists()]
+            if (s, r) not in done and not (CACHE / f"laps_{s}_{r}.json").exists()]
     print(f"{len(todo)} races to download (~{len(todo) * 13 * MIN_INTERVAL / 3600:.1f} h)", flush=True)
     for i, (s, r) in enumerate(todo, 1):
         fetch_laps(s, r)

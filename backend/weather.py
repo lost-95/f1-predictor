@@ -111,13 +111,20 @@ def weather_for_race(race: dict, use_cache: bool = True) -> dict:
 def build():
     races = pd.read_csv(DATA / "races.csv")
     limit = date.today() + timedelta(days=15)
+    # final ERA5 values never change: reuse them from the existing table (no disk cache in CI)
+    final = {}
+    if (DATA / "weather.csv").exists():
+        old = pd.read_csv(DATA / "weather.csv")
+        for row in old[old.weather_source.astype(str).str.contains("ERA5")].to_dict("records"):
+            final[(row["season"], row["round"])] = {k: v for k, v in row.items() if pd.notna(v)}
     rows = []
     for i, race in enumerate(races.to_dict("records")):
         if date.fromisoformat(race["date"]) > limit:
             rows.append({"season": race["season"], "round": race["round"],
                          "weather_source": "not available yet"})
             continue
-        rows.append(weather_for_race(race))
+        key = (race["season"], race["round"])
+        rows.append(final[key] if key in final else weather_for_race(race))
         if i % 50 == 0:
             print(f"{i}/{len(races)} {race['season']} {race['raceName']}", flush=True)
     df = pd.DataFrame(rows)

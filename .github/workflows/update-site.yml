@@ -1,0 +1,77 @@
+# Keeps the public static site up to date:
+#   1. incremental data update (latest season, new lap times, weather) + retraining when
+#      there are new race results,
+#   2. commits the updated data/models back to main when they changed,
+#   3. exports the static site and publishes it to the `site` branch (served by Netlify at
+#      lorenzosantarelli.com/f1-predictor/).
+name: Update data and site
+
+on:
+  schedule:
+    - cron: "20 */3 * * 5,6,0,1"   # every 3 hours Friday-Monday (UTC): race weekends
+    - cron: "20 6 * * 2,3,4"       # once a day Tuesday-Thursday
+  workflow_dispatch:
+    inputs:
+      retrain:
+        description: "Retrain the models even without new results"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths: ["frontend/**", "backend/**", "requirements.txt", ".github/workflows/update-site.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-site
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Update data and retrain if needed
+        env:
+          FORCE_RETRAIN: ${{ github.event.inputs.retrain || 'false' }}
+          TZ: Europe/Rome
+        run: python backend/update.py
+
+      - name: Commit updated data and models
+        run: |
+          if git diff --quiet -- data/results.csv data/qualifying.csv data/race_pace.csv models; then
+            echo "No new results or models to commit."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data models
+            git commit -m "data: update $(date -u +'%Y-%m-%d %H:%M') UTC"
+            git pull --rebase --autostash
+            git push
+          fi
+
+      - name: Build static site
+        env:
+          TZ: Europe/Rome
+        run: python backend/export_static.py dist
+
+      - name: Publish to the site branch
+        run: |
+          cd dist
+          git init -q -b site
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "site: $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" site
