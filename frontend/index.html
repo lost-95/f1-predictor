@@ -2,6 +2,11 @@
 <html lang="it">
 <head>
   <meta charset="utf-8">
+  <script>
+    // served under a sub-path (e.g. /f1-predictor): relative asset paths need the trailing slash
+    if (!location.pathname.endsWith('/') && !/\.[a-z0-9]+$/i.test(location.pathname))
+      location.replace(location.pathname + '/' + location.search + location.hash);
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>F1 Predictor</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">

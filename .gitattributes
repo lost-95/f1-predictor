@@ -1,0 +1,11 @@
+# Same line endings on Windows and on the Linux GitHub Action runner,
+# so data files only show up as changed when their content changes.
+*.csv  text eol=lf
+*.json text eol=lf
+*.txt  text eol=lf
+*.py   text eol=lf
+*.js   text eol=lf
+*.html text eol=lf
+*.css  text eol=lf
+*.md   text eol=lf
+*.yml  text eol=lf

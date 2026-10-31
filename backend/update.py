@@ -19,7 +19,8 @@ from config import DATA, MODELS
 
 
 def digest(path) -> str | None:
-    return hashlib.md5(path.read_bytes()).hexdigest() if path.exists() else None
+    """Content hash that ignores line endings (pandas writes CRLF on Windows, LF on Linux)."""
+    return hashlib.md5(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest() if path.exists() else None
 
 
 def main():
