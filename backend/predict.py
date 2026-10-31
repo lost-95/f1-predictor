@@ -99,6 +99,14 @@ def predict_next(scenario: str = "auto") -> dict:
                                     on="driverId", how="left")
     fanta_model = fanta_quali + fanta_race
     fanta_value = fanta.blend(fanta_model, form.form_avg, form.form_n, cal["form_weight"], cal["form_k"])
+    # After qualifying: qualifying points are known, race points from the post-qualifying model
+    post_quali_fp = post_race_fp = None
+    if mode == "post_quali":
+        t_post = cal.get("t_race_post") or M.load("post_quali")[1]["temperature"]
+        post_pos = M.simulate_positions(out_models["post_quali"]["scores"], t_post, seed=4)
+        post_race_fp = M.expected_points(post_pos, fanta.RACE_POINTS)
+        table = [0.0] + fanta.QUALI_POINTS
+        post_quali_fp = np.array([table[int(g)] if pd.notna(g) and 1 <= g < len(table) else 0.0 for g in rows.grid])
 
     primary = out_models[mode]
     drivers = []
@@ -121,6 +129,9 @@ def predict_next(scenario: str = "auto") -> dict:
             "fanta_form": None if pd.isna(form.form_avg[i]) else round(float(form.form_avg[i]), 2),
             "fanta_form_n": int(np.nan_to_num(form.form_n[i])),
             "fanta_value": round(float(fanta_value[i]), 2),
+            "fanta_post_quali": None if post_quali_fp is None else round(float(post_quali_fp[i]), 2),
+            "fanta_post_race": None if post_race_fp is None else round(float(post_race_fp[i]), 2),
+            "fanta_post": None if post_quali_fp is None else round(float(post_quali_fp[i] + post_race_fp[i]), 2),
             "stats": {k: (None if pd.isna(r[k]) else round(float(r[k]), 2)) for k in (
                 "d_avg_pos_5", "d_season_ppr", "d_circuit_avg", "d_circuit_n", "d_wet_skill",
                 "d_qgap_5", "t_pts_5", "t_prev_rank", "t_win_rate_3y", "t_titles", "d_champ_rank",

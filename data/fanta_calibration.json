@@ -3,12 +3,15 @@
   "t_quali": 1.0,
   "form_weight": 0.5,
   "form_k": 2,
+  "t_race_post": 1.35,
   "fitted_on": "2010-2015",
   "checked_on": "2016-today",
   "check_rmse": {
     "winner_temperatures": 78.1,
     "fanta_temperatures": 75.7,
-    "fanta_temperatures_plus_form": 75.4
+    "fanta_temperatures_plus_form": 75.4,
+    "after_quali_winner_temperature": 59.0,
+    "after_quali_fanta_temperature": 57.6
   },
   "check_by_rank": {
     "before": {

@@ -199,14 +199,16 @@ def load_calibration() -> dict:
 
 # ---------- calibration on the backtest ----------
 def calibrate() -> dict:
-    """Pick the fanta temperatures and the form blend on 2010-2015, check them on 2016-today."""
+    """Pick the fanta temperatures (pre- and post-qualifying race model, qualifying model) and the
+    form blend on 2010-2015, check them on 2016-today."""
     bt = pd.read_csv(DATA / "backtest.csv")
     qb = pd.read_csv(DATA / "quali_backtest.csv")
     results, quali = pd.read_csv(DATA / "results.csv"), pd.read_csv(DATA / "qualifying.csv")
     rep = json.loads((DATA / "model_report.json").read_text())["models"]
     t_race0, t_quali0 = rep["pre_quali"]["temperature"], rep["quali"]["temperature"]
+    t_post0 = rep["post_quali"]["temperature"]
 
-    d = bt[bt.season >= FIT_SEASONS[0]][["season", "round", "race_idx", "driverId", "pre_quali_score"]]
+    d = bt[bt.season >= FIT_SEASONS[0]][["season", "round", "race_idx", "driverId", "pre_quali_score", "post_quali_score"]]
     d = d.merge(qb[["race_idx", "driverId", "score"]].rename(columns={"score": "q_score"}),
                 on=["race_idx", "driverId"], how="left")
     d = d.merge(realized(results, quali)[["season", "round", "driverId", "quali_fp", "race_fp", "fp"]],
@@ -233,6 +235,9 @@ def calibrate() -> dict:
     quali_by_t = {T: expected("q_score", T, QUALI_POINTS) for T in grid + [t_quali0]}
     t_race = min(grid, key=lambda T: mse(race_by_t[T], d.race_fp.values, fit))
     t_quali = min(grid, key=lambda T: mse(quali_by_t[T], d.quali_fp.values, fit))
+    # after qualifying: real qualifying points + race points from the post-qualifying model
+    post_by_t = {T: expected("post_quali_score", T, RACE_POINTS) for T in grid + [t_post0]}
+    t_race_post = min(grid, key=lambda T: mse(post_by_t[T], d.race_fp.values, fit))
 
     base = race_by_t[t_race0] + quali_by_t[t_quali0]
     model = race_by_t[t_race] + quali_by_t[t_quali]
@@ -249,12 +254,14 @@ def calibrate() -> dict:
         return {int(r): [float(a), float(b)] for r, (a, b) in t.loc[t.index <= 20].iterrows()}
 
     res = {
-        "t_race": t_race, "t_quali": t_quali, "form_weight": w, "form_k": k,
+        "t_race": t_race, "t_quali": t_quali, "form_weight": w, "form_k": k, "t_race_post": t_race_post,
         "fitted_on": f"{FIT_SEASONS[0]}-{FIT_SEASONS[1]}", "checked_on": f"{CHECK_FROM}-today",
         "check_rmse": {
             "winner_temperatures": round(mse(base, real, check) ** .5, 1),
             "fanta_temperatures": round(mse(model, real, check) ** .5, 1),
             "fanta_temperatures_plus_form": round(mse(final, real, check) ** .5, 1),
+            "after_quali_winner_temperature": round(mse(d.quali_fp.values + post_by_t[t_post0], real, check) ** .5, 1),
+            "after_quali_fanta_temperature": round(mse(d.quali_fp.values + post_by_t[t_race_post], real, check) ** .5, 1),
         },
         "check_by_rank": {"before": by_rank(base, check), "after": by_rank(final, check)},
     }

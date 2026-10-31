@@ -84,27 +84,32 @@ def api_fanta(min_price: float | None = None):
         rows.append({"driverId": d["driverId"], "name": d["name"], "code": d["code"], "team": d["team"],
                      "teamId": d["teamId"], "value": d["fanta_value"], "value_quali": d["fanta_quali"],
                      "value_race": d["fanta_race"], "value_model": d["fanta_model"], "form": d["fanta_form"],
-                     "form_n": d["fanta_form_n"], "price_model": float(p),
+                     "form_n": d["fanta_form_n"], "price_model": float(p), "grid": d["grid"],
+                     "value_post": d["fanta_post"], "value_post_quali": d["fanta_post_quali"],
+                     "value_post_race": d["fanta_post_race"],
                      "price": off_price if official else float(p)})
     rows.sort(key=lambda r: (-r["price"], -r["value"]))
 
     # a team scores the points of both its drivers
     teams = {}
     for d in drivers:
-        t = teams.setdefault(d["teamId"], {"teamId": d["teamId"], "name": d["team"], "drivers": [], "values": []})
+        t = teams.setdefault(d["teamId"], {"teamId": d["teamId"], "name": d["team"], "drivers": [], "values": [], "post": []})
         t["drivers"].append(d["code"] or d["name"])
         t["values"].append(d["fanta_value"])
+        t["post"].append(d["fanta_post"])
     teams = list(teams.values())
     model_team = fanta.team_prices([sum(t["values"]) / len(t["values"]) for t in teams], max(values))
     for t, p in zip(teams, model_team):
         t["value"] = round(sum(t["values"]), 2)
+        t["value_post"] = None if None in t["post"] else round(sum(t["post"]), 2)
         t["price_model"] = float(p)
         t["price"] = off_team.get(t["teamId"], float(p)) if official else float(p)
-        del t["values"]
+        del t["values"], t["post"]
     teams.sort(key=lambda t: (-t["price"], -t["value"]))
 
     return clean({"race": nxt["race"], "top_price": fanta.TOP_PRICE, "min_price_range": [lo, hi],
                   "price_source": "official" if official else "model",
+                  "has_post": any(d["fanta_post"] is not None for d in drivers),
                   "teams": teams, "team_price_range": list(fanta.TEAM_PRICE_RANGE),
                   "rules": {"budget": fanta.TOTAL_BUDGET, "target": fanta.TARGET_POINTS,
                             "drivers": {"picks": fanta.DRIVER_PICKS}, "teams": {"picks": fanta.TEAM_PICKS}},

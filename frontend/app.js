@@ -196,6 +196,10 @@ $('#scenario').onclick = e => {
 
 // ---------- FANTA F1 ----------
 let fantaBase = null, fantaData = null, fantaMin = null;
+// expected points used for values and suggestions: 'post' = with the real qualifying result (when known)
+let fantaBasis = store.get('f1-fanta-basis') === 'pre' ? 'pre' : 'post';
+const usePost = () => !!fantaData?.has_post && fantaBasis === 'post';
+const val = x => usePost() && x.value_post != null ? x.value_post : x.value;
 let fantaSub = ['prices', 'drivers', 'teams'].includes(store.get('f1-fanta-sub')) ? store.get('f1-fanta-sub') : 'prices';
 let picks = { race: null, drivers: [], teams: [] };
 
@@ -234,6 +238,9 @@ function applyMinPrice() {
 
 function renderPrices() {
   const d = fantaData, r = d.race;
+  $('#fanta-basis-bar').hidden = !d.has_post;
+  $$('#fanta-basis button').forEach(b => b.classList.toggle('on', b.dataset.b === (usePost() ? 'post' : 'pre')));
+  $('#fanta-basis-note').textContent = d.has_post ? t(usePost() ? 'basis.note_post' : 'basis.note_pre') : '';
   $('#fanta-race').textContent = t('fanta.race', { race: r.raceName, date: fmtDate(r.date), s: r.season, r: r.round });
   $('#fanta-min').value = d.min_price;
   $('#fanta-min-val').textContent = coins(d.min_price);
@@ -253,15 +260,17 @@ function renderPrices() {
     <td><div class="driver"><span class="tbar"></span><div><span class="code">${esc(x.code)}</span> ${esc(x.name)}<div class="sub">${esc(x.team)}</div></div></div></td>
     <td class="hide-sm">${esc(x.team)}</td>
     <td><div class="bar price"><i style="width:${(x.price / d.top_price * 100).toFixed(1)}%"></i><span>${coins(x.price)}</span></div></td>
-    <td class="num hide-sm">${coins(x.value_model)}<div class="sub">${t('fanta.qr', { q: coins(x.value_quali), r: coins(x.value_race) })}</div></td>
+    <td class="num hide-sm">${usePost() && x.value_post != null
+      ? `${coins(x.value_post)}<div class="sub">${t('fanta.qr_post', { p: x.grid ?? '–', q: coins(x.value_post_quali), r: coins(x.value_post_race) })}</div>`
+      : `${coins(x.value_model)}<div class="sub">${t('fanta.qr', { q: coins(x.value_quali), r: coins(x.value_race) })}</div>`}</td>
     <td class="num hide-sm">${x.form == null ? '–' : coins(x.form)}<div class="sub">${t('fanta.races_n', { n: x.form_n })}</div></td>
-    <td class="num"><b>${coins(x.value)}</b></td></tr>`).join('');
+    <td class="num"><b>${coins(val(x))}</b></td></tr>`).join('');
   $('#fanta-teams-table tbody').innerHTML = d.teams.map((x, i) => `<tr style="--team:${teamColor(x.teamId)}">
     <td class="num">${i + 1}</td>
     <td><div class="driver"><span class="tbar"></span><b>${esc(x.name)}</b></div></td>
     <td class="hide-sm sub">${esc(x.drivers.join(' · '))}</td>
     <td><div class="bar price"><i style="width:${(x.price / d.team_price_range[1] * 100).toFixed(1)}%"></i><span>${coins(x.price)}</span></div></td>
-    <td class="num">${coins(x.value)}</td></tr>`).join('');
+    <td class="num">${coins(val(x))}</td></tr>`).join('');
   const c = d.calibration;
   if (c && c.form_weight) {
     const w = n => Math.round(c.form_weight * n / (n + c.form_k) * 100);
@@ -275,6 +284,12 @@ function renderPrices() {
 
 $('#fanta-min').oninput = e => { fantaMin = +e.target.value; applyMinPrice(); };
 $('#fanta-auto').onclick = () => { fantaMin = null; applyMinPrice(); };
+$('#fanta-basis').onclick = e => {
+  const b = e.target.closest('button'); if (!b) return;
+  fantaBasis = b.dataset.b;
+  store.set('f1-fanta-basis', fantaBasis);
+  renderPrices(); renderBuilder(); renderBadges();
+};
 $('#fanta-menu').onclick = e => {
   const b = e.target.closest('button[data-sub]'); if (!b) return;
   fantaSub = b.dataset.sub;
@@ -300,8 +315,8 @@ function loadPicks(raceKey) {
 const savePicks = () => store.set('f1-fanta-picks', JSON.stringify(picks));
 function builderItems(kind) {
   return kind === 'drivers'
-    ? fantaData.drivers.map(x => ({ id: x.driverId, label: x.code || x.name, name: x.name, sub: x.team, teamId: x.teamId, price: x.price, value: x.value }))
-    : fantaData.teams.map(x => ({ id: x.teamId, label: x.name, name: x.name, sub: x.drivers.join(' · '), teamId: x.teamId, price: x.price, value: x.value }));
+    ? fantaData.drivers.map(x => ({ id: x.driverId, label: x.code || x.name, name: x.name, sub: x.team, teamId: x.teamId, price: x.price, value: val(x) }))
+    : fantaData.teams.map(x => ({ id: x.teamId, label: x.name, name: x.name, sub: x.drivers.join(' · '), teamId: x.teamId, price: x.price, value: val(x) }));
 }
 const cents = v => Math.round(v * 10);  // prices have one decimal: compare in tenths
 const KINDS = ['drivers', 'teams'];

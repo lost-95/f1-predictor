@@ -170,3 +170,4 @@ select { background: var(--panel); color: var(--text); border: 1px solid var(--l
   .b-stats { gap: 18px; }
 }
 .b-stats .sub.good { color: var(--good); }
+.basis-bar { margin: 0 0 16px; }
