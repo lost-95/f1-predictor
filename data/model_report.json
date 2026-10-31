@@ -1,5 +1,5 @@
 {
-  "trained_at": "2026-10-31T18:13:16",
+  "trained_at": "2026-10-31T23:05:11",
   "method": "walk-forward: each season predicted by a model trained on earlier seasons",
   "n_races": 504,
   "n_rows": 10573,
