@@ -883,6 +883,7 @@ season,kind,position,points,wins,id,name,team
 2026,driver,21,0.0,0,stroll,Lance Stroll,Aston Martin
 2026,driver,22,0.0,0,bottas,Valtteri Bottas,Cadillac F1 Team
 2026,driver,23,0.0,0,perez,Sergio Pérez,Cadillac F1 Team
+2026,driver,24,0.0,0,ryo_hirakawa,Ryo Hirakawa,Haas F1 Team
 2026,constructor,1,607.0,12,mercedes,Mercedes,
 2026,constructor,2,474.0,2,ferrari,Ferrari,
 2026,constructor,3,355.0,2,red_bull,Red Bull,
