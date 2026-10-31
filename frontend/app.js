@@ -278,58 +278,84 @@ function builderItems(kind) {
     : fantaData.teams.map(x => ({ id: x.teamId, label: x.name, name: x.name, sub: x.drivers.join(' · '), teamId: x.teamId, price: x.price, value: x.value }));
 }
 const cents = v => Math.round(v * 10);  // prices have one decimal: compare in tenths
-function lineup(kind) {
-  const rule = fantaData.rules[kind], items = builderItems(kind);
-  const chosen = items.filter(i => picks[kind].includes(i.id));
-  const spent = chosen.reduce((s, i) => s + i.price, 0);
-  const valid = chosen.length === rule.picks && cents(spent) <= cents(rule.budget);
-  return { rule, items, chosen, spent, valid, value: chosen.reduce((s, i) => s + i.value, 0) };
+const KINDS = ['drivers', 'teams'];
+// The whole squad: 6 drivers + 3 teams sharing one budget
+function squad() {
+  const r = fantaData.rules, S = { budget: r.budget, kinds: {}, spent: 0, value: 0 };
+  for (const kind of KINDS) {
+    const items = builderItems(kind), chosen = items.filter(i => picks[kind].includes(i.id));
+    const spent = chosen.reduce((a, i) => a + i.price, 0);
+    S.kinds[kind] = { items, chosen, spent, picks: r[kind].picks, need: r[kind].picks - chosen.length };
+    S.spent += spent;
+    S.value += chosen.reduce((a, i) => a + i.value, 0);
+  }
+  S.left = S.budget - S.spent;
+  S.over = cents(S.spent) > cents(S.budget);
+  S.valid = !S.over && KINDS.every(k => S.kinds[k].need === 0);
+  return S;
+}
+// Cheapest possible cost of the picks still missing once `skipId` (of `kindAdding`) is added
+function reserve(S, skipId, kindAdding) {
+  let total = 0;
+  for (const kind of KINDS) {
+    const k = S.kinds[kind], need = k.need - (kind === kindAdding ? 1 : 0);
+    if (need <= 0) continue;
+    const free = k.items.filter(i => !picks[kind].includes(i.id) && i.id !== skipId).map(i => i.price).sort((a, b) => a - b);
+    total += free.slice(0, need).reduce((a, p) => a + p, 0);
+  }
+  return total;
 }
 function renderBadges() {
-  for (const kind of ['drivers', 'teams']) {
-    const L = lineup(kind), el = $('#badge-' + kind);
-    el.textContent = `${L.chosen.length}/${L.rule.picks}`;
-    el.classList.toggle('ok', L.valid);
+  const S = squad();
+  for (const kind of KINDS) {
+    const k = S.kinds[kind], el = $('#badge-' + kind);
+    el.textContent = `${k.chosen.length}/${k.picks}`;
+    el.classList.toggle('ok', k.need === 0 && !S.over);
   }
+}
+function needText(S) {
+  const d = S.kinds.drivers.need, tm = S.kinds.teams.need, parts = [];
+  if (d > 0) parts.push(`${d} ${t(d === 1 ? 'b.n_driver1' : 'b.n_drivers')}`);
+  if (tm > 0) parts.push(`${tm} ${t(tm === 1 ? 'b.n_team1' : 'b.n_teams')}`);
+  return t('b.need', { parts: parts.join(t('b.and')) });
 }
 function renderBuilder() {
   const kind = fantaSub;
   if (kind === 'prices' || !fantaData) return;
-  const L = lineup(kind), { rule } = L;
-  const left = rule.budget - L.spent;
+  const S = squad(), K = S.kinds[kind];
   $('#b-title').textContent = t(kind === 'drivers' ? 'b.title_drivers' : 'b.title_teams');
-  $('#b-rules').innerHTML = t('b.rules_' + kind, { n: rule.picks, b: num(rule.budget, 0) });
+  $('#b-rules').innerHTML = t('b.rules', { d: S.kinds.drivers.picks, t: S.kinds.teams.picks, b: num(S.budget, 0) });
   $('#b-th-name').textContent = t(kind === 'drivers' ? 'th.driver' : 'th.team');
-  $('#b-count').textContent = `${L.chosen.length} / ${rule.picks}`;
-  $('#b-spent').textContent = `${coins(L.spent)} / ${num(rule.budget, 0)}`;
-  $('#b-left').textContent = coins(left);
-  $('#b-left').classList.toggle('bad', cents(left) < 0);
-  $('#b-exp').textContent = num(L.value, 0);
-  $('#b-bar').style.width = Math.min(100, L.spent / rule.budget * 100).toFixed(1) + '%';
-  $('#b-bar').classList.toggle('over', cents(left) < 0);
+  for (const k of KINDS) $('#b-count-' + k).textContent = `${S.kinds[k].chosen.length} / ${S.kinds[k].picks}`;
+  $('#b-spent').textContent = `${coins(S.spent)} / ${num(S.budget, 0)}`;
+  $('#b-split').textContent = t('b.split', { d: coins(S.kinds.drivers.spent), t: coins(S.kinds.teams.spent) });
+  $('#b-left').textContent = coins(S.left);
+  $('#b-left').classList.toggle('bad', S.over);
+  $('#b-exp').textContent = num(S.value, 0);
+  $('#b-bar').style.width = Math.min(100, S.spent / S.budget * 100).toFixed(1) + '%';
+  $('#b-bar').classList.toggle('over', S.over);
   const st = $('#b-status');
-  if (cents(left) < 0) { st.className = 'b-status bad'; st.textContent = t('b.over', { v: coins(-left) }); }
-  else if (L.chosen.length < rule.picks) { st.className = 'b-status'; st.textContent = t('b.need', { k: rule.picks - L.chosen.length }); }
+  if (S.over) { st.className = 'b-status bad'; st.textContent = t('b.over', { v: coins(-S.left) }); }
+  else if (!S.valid) { st.className = 'b-status'; st.textContent = needText(S); }
   else { st.className = 'b-status good'; st.textContent = t('b.ok'); }
-  $('#b-picks').innerHTML = L.chosen.length
-    ? L.chosen.map(i => `<span class="pick" style="--team:${teamColor(i.teamId)}"><i></i>${esc(i.label)} <b>${coins(i.price)}</b>
-        <button data-remove="${esc(i.id)}" aria-label="${t('b.remove')}">×</button></span>`).join('')
+  const all = KINDS.flatMap(k => S.kinds[k].chosen.map(i => ({ ...i, kind: k })));
+  $('#b-picks').innerHTML = all.length
+    ? all.map(i => `<span class="pick${i.kind === 'teams' ? ' team' : ''}" style="--team:${teamColor(i.teamId)}"><i></i>${esc(i.label)} <b>${coins(i.price)}</b>
+        <button data-remove="${esc(i.id)}" data-kind="${i.kind}" aria-label="${t('b.remove')}">×</button></span>`).join('')
     : `<span class="muted small">${t('b.empty')}</span>`;
-  const maxCost = rule.picks * fantaData.team_price_range[1];
-  $('#b-cap').hidden = !(kind === 'teams' && maxCost <= rule.budget);
-  $('#b-cap').textContent = t('b.team_cap', { n: rule.picks, m: num(maxCost, 0), b: num(rule.budget, 0) });
 
-  const full = L.chosen.length >= rule.picks;
-  $('#b-table tbody').innerHTML = L.items.map(i => {
+  $('#b-table tbody').innerHTML = K.items.map(i => {
     const on = picks[kind].includes(i.id);
-    const tooPricey = !on && cents(i.price) > cents(left);
-    const why = on ? '' : full ? t('b.full', { n: rule.picks }) : tooPricey ? t('b.no_budget') : '';
+    let why = '';
+    if (!on && K.need <= 0) why = t('b.full', { n: K.picks });
+    else if (!on && cents(i.price) > cents(S.left)) why = t('b.no_budget');
+    else if (!on && cents(i.price + reserve(S, i.id, kind)) > cents(S.left)) why = t('b.no_room');
     return `<tr class="${on ? 'picked' : ''}" style="--team:${teamColor(i.teamId)}">
       <td><div class="driver"><span class="tbar"></span><div>${esc(i.name)}<div class="sub">${esc(i.sub)}</div></div></div></td>
       <td class="num"><b>${coins(i.price)}</b></td>
       <td class="num">${coins(i.value)}</td>
       <td class="right">${on
-        ? `<button class="btn ghost sm" data-remove="${esc(i.id)}">${t('b.remove')}</button>`
+        ? `<button class="btn ghost sm" data-remove="${esc(i.id)}" data-kind="${kind}">${t('b.remove')}</button>`
         : `<button class="btn sm" data-add="${esc(i.id)}" ${why ? `disabled title="${esc(why)}"` : ''}>${t('b.add')}</button>`}</td></tr>`;
   }).join('');
 }
@@ -351,19 +377,43 @@ function bestLineup(items, n, budget) {
   })(0, 0, 0);
   return best;
 }
+// Best full squad: for every choice of teams, the best drivers with the budget that is left
+function bestSquad() {
+  const S = squad(), D = S.kinds.drivers, T = S.kinds.teams;
+  const combos = (arr, k, start = 0, cur = [], out = []) => {
+    if (cur.length === k) { out.push([...cur]); return out; }
+    for (let i = start; i < arr.length; i++) { cur.push(arr[i]); combos(arr, k, i + 1, cur, out); cur.pop(); }
+    return out;
+  };
+  const value = new Map(D.items.map(i => [i.id, i.value]));
+  const memo = new Map();
+  let best = null, bestV = -1;
+  for (const tc of combos(T.items, T.picks)) {
+    const rest = cents(S.budget) - tc.reduce((a, i) => a + cents(i.price), 0);
+    if (rest < 0) continue;
+    if (!memo.has(rest)) {
+      const ids = bestLineup(D.items, D.picks, rest / 10);
+      memo.set(rest, ids && { ids, v: ids.reduce((a, id) => a + value.get(id), 0) });
+    }
+    const dl = memo.get(rest);
+    const v = dl ? dl.v + tc.reduce((a, i) => a + i.value, 0) : -1;
+    if (dl && v > bestV) { bestV = v; best = { drivers: dl.ids, teams: tc.map(i => i.id) }; }
+  }
+  return best;
+}
 $('#fanta-builder').onclick = e => {
   const kind = fantaSub;
   const add = e.target.closest('[data-add]'), rem = e.target.closest('[data-remove]');
   if (add && !add.disabled) {
-    const L = lineup(kind);
-    if (L.chosen.length < L.rule.picks) picks[kind].push(add.dataset.add);
+    if (squad().kinds[kind].need > 0) picks[kind].push(add.dataset.add);
   } else if (rem) {
-    picks[kind] = picks[kind].filter(id => id !== rem.dataset.remove);
+    const k = rem.dataset.kind || kind;
+    picks[k] = picks[k].filter(id => id !== rem.dataset.remove);
   } else if (e.target.id === 'b-best') {
-    const L = lineup(kind), best = bestLineup(L.items, L.rule.picks, L.rule.budget);
-    if (best) picks[kind] = best;
+    const best = bestSquad();
+    if (best) { picks.drivers = best.drivers; picks.teams = best.teams; }
   } else if (e.target.id === 'b-clear') {
-    picks[kind] = [];
+    picks.drivers = []; picks.teams = [];
   } else return;
   savePicks();
   renderBuilder();

@@ -37,9 +37,9 @@ QUALI_POINTS = [149.82, 135.56, 122.66, 110.99, 99.43, 89.07, 79.00, 69.37, 59.7
 RACE_POINTS = [299.64, 271.13, 245.33, 221.98, 198.86, 178.14, 158.00, 138.74, 119.41, 100.74, 86.71,
                73.89, 63.60, 54.74, 47.11, 40.15, 33.20, 27.18, 22.26, 18.22, 14.92, 12.21]
 
-# Team building rules
-DRIVER_PICKS, DRIVER_BUDGET = 6, 140.0
-TEAM_PICKS, TEAM_BUDGET = 3, 140.0
+# Team building rules: exactly 6 drivers and 3 teams, one shared budget for all of them
+DRIVER_PICKS, TEAM_PICKS = 6, 3
+TOTAL_BUDGET = 140.0
 # Team price: average value of its drivers, on the same proportional scale as drivers
 # (30 coins = value of the top driver), kept within 4-30. So 30 is reached only by a team
 # whose drivers are both worth as much as the top driver.

@@ -95,8 +95,8 @@ def api_fanta(min_price: float | None = None):
 
     return clean({"race": nxt["race"], "top_price": fanta.TOP_PRICE, "min_price_range": [lo, hi],
                   "teams": teams, "team_price_range": list(fanta.TEAM_PRICE_RANGE),
-                  "rules": {"drivers": {"picks": fanta.DRIVER_PICKS, "budget": fanta.DRIVER_BUDGET},
-                            "teams": {"picks": fanta.TEAM_PICKS, "budget": fanta.TEAM_BUDGET}},
+                  "rules": {"budget": fanta.TOTAL_BUDGET,
+                            "drivers": {"picks": fanta.DRIVER_PICKS}, "teams": {"picks": fanta.TEAM_PICKS}},
                   "min_price_auto": fanta.auto_min_price(values), "min_price": used, "drivers": rows,
                   "points_table": {"quali": fanta.QUALI_POINTS, "race": fanta.RACE_POINTS},
                   "calibration": fanta.load_calibration()})

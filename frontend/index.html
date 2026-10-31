@@ -6,7 +6,7 @@
   <title>F1 Predictor</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/static/style.css?v=5">
+  <link rel="stylesheet" href="/static/style.css?v=6">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 <body>
@@ -139,8 +139,9 @@
             <p class="muted" id="b-rules"></p>
             <div class="card builder-summary">
               <div class="b-stats">
-                <div><span class="muted small" data-i18n="b.selected"></span><b id="b-count"></b></div>
-                <div><span class="muted small" data-i18n="b.spent"></span><b id="b-spent"></b></div>
+                <div><span class="muted small" data-i18n="th.drivers"></span><b id="b-count-drivers"></b></div>
+                <div><span class="muted small" data-i18n="fanta.menu.teams"></span><b id="b-count-teams"></b></div>
+                <div><span class="muted small" data-i18n="b.spent"></span><b id="b-spent"></b><span class="sub" id="b-split"></span></div>
                 <div><span class="muted small" data-i18n="b.left"></span><b id="b-left"></b></div>
                 <div><span class="muted small" data-i18n="b.exp"></span><b id="b-exp"></b></div>
               </div>
@@ -152,7 +153,6 @@
                 <button class="btn ghost" id="b-clear" data-i18n="b.clear"></button>
               </div>
               <p class="sub" data-i18n="b.best_note"></p>
-              <p class="sub" id="b-cap" hidden></p>
             </div>
             <div class="card">
               <div class="table-wrap">
@@ -258,7 +258,7 @@
     </div>
   </div>
 
-  <script src="/static/i18n.js?v=1"></script>
-  <script src="/static/app.js?v=8"></script>
+  <script src="/static/i18n.js?v=2"></script>
+  <script src="/static/app.js?v=9"></script>
 </body>
 </html>

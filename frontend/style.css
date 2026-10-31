@@ -84,6 +84,8 @@ select { background: var(--panel); color: var(--text); border: 1px solid var(--l
 .b-stats { display: flex; gap: 28px; flex-wrap: wrap; }
 .b-stats div b { display: block; font-family: "JetBrains Mono", monospace; font-size: 20px; }
 .b-stats b.bad { color: var(--bad); }
+.b-stats .sub { display: block; }
+.pick.team { border-radius: 8px; }
 .budget-bar { height: 8px; background: var(--panel-2); border-radius: 999px; overflow: hidden; margin: 14px 0 10px; }
 .budget-bar i { display: block; height: 100%; background: var(--good); border-radius: 999px; transition: width .2s; }
 .budget-bar i.over { background: var(--bad); }
