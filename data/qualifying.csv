@@ -9886,18 +9886,18 @@ season,round,driverId,driverName,driverCode,constructorId,constructorName,q_pos,
 2026,19,antonelli,Andrea Kimi Antonelli,ANT,mercedes,Mercedes,5,76.707,0.252
 2026,19,norris,Lando Norris,NOR,mclaren,McLaren,6,76.72800000000001,0.28
 2026,19,hadjar,Isack Hadjar,HAD,red_bull,Red Bull,7,76.9,0.504
-2026,19,piastri,Oscar Piastri,PIA,mclaren,McLaren,13,77.646,1.479
-2026,19,bortoleto,Gabriel Bortoleto,BOR,audi,Audi,14,77.68,1.524
+2026,19,piastri,Oscar Piastri,PIA,mclaren,McLaren,12,77.646,1.479
+2026,19,bortoleto,Gabriel Bortoleto,BOR,audi,Audi,13,77.68,1.524
+2026,19,arvid_lindblad,Arvid Lindblad,LIN,rb,RB F1 Team,8,77.117,0.788
 2026,19,lawson,Liam Lawson,LAW,rb,RB F1 Team,8,77.029,0.673
-2026,19,arvid_lindblad,Arvid Lindblad,LIN,rb,RB F1 Team,9,77.117,0.788
-2026,19,gasly,Pierre Gasly,GAS,alpine,Alpine F1 Team,10,77.15299999999999,0.835
-2026,19,hulkenberg,Nico Hülkenberg,HUL,audi,Audi,11,77.306,1.035
-2026,19,colapinto,Franco Colapinto,COL,alpine,Alpine F1 Team,12,77.64,1.472
-2026,19,bearman,Oliver Bearman,BEA,haas,Haas F1 Team,15,78.083,2.051
-2026,19,sainz,Carlos Sainz,SAI,williams,Williams,16,78.521,2.623
-2026,19,albon,Alexander Albon,ALB,williams,Williams,17,78.63,2.766
-2026,19,alonso,Fernando Alonso,ALO,aston_martin,Aston Martin,18,78.908,3.129
-2026,19,ryo_hirakawa,Ryo Hirakawa,HIR,haas,Haas F1 Team,19,78.958,3.194
-2026,19,stroll,Lance Stroll,STR,aston_martin,Aston Martin,20,79.072,3.343
-2026,19,perez,Sergio Pérez,PER,cadillac,Cadillac F1 Team,21,79.105,3.386
-2026,19,bottas,Valtteri Bottas,BOT,cadillac,Cadillac F1 Team,22,79.852,4.363
+2026,19,gasly,Pierre Gasly,GAS,alpine,Alpine F1 Team,9,77.15299999999999,0.835
+2026,19,hulkenberg,Nico Hülkenberg,HUL,audi,Audi,10,77.306,1.035
+2026,19,colapinto,Franco Colapinto,COL,alpine,Alpine F1 Team,11,77.64,1.472
+2026,19,bearman,Oliver Bearman,BEA,haas,Haas F1 Team,14,78.083,2.051
+2026,19,sainz,Carlos Sainz,SAI,williams,Williams,15,78.521,2.623
+2026,19,albon,Alexander Albon,ALB,williams,Williams,16,78.63,2.766
+2026,19,alonso,Fernando Alonso,ALO,aston_martin,Aston Martin,17,78.908,3.129
+2026,19,ryo_hirakawa,Ryo Hirakawa,HIR,haas,Haas F1 Team,18,78.958,3.194
+2026,19,stroll,Lance Stroll,STR,aston_martin,Aston Martin,19,79.072,3.343
+2026,19,perez,Sergio Pérez,PER,cadillac,Cadillac F1 Team,20,79.105,3.386
+2026,19,bottas,Valtteri Bottas,BOT,cadillac,Cadillac F1 Team,21,79.852,4.363
