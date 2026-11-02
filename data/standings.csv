@@ -860,18 +860,18 @@ season,kind,position,points,wins,id,name,team
 2025,constructor,8,79.0,0,haas,Haas F1 Team,
 2025,constructor,9,70.0,0,sauber,Sauber,
 2025,constructor,10,22.0,0,alpine,Alpine F1 Team,
-2026,driver,1,365.0,9,antonelli,Andrea Kimi Antonelli,Mercedes
-2026,driver,2,242.0,3,russell,George Russell,Mercedes
-2026,driver,3,241.0,1,hamilton,Lewis Hamilton,Ferrari
-2026,driver,4,236.0,2,max_verstappen,Max Verstappen,Red Bull
-2026,driver,5,233.0,1,leclerc,Charles Leclerc,Ferrari
-2026,driver,6,211.0,2,norris,Lando Norris,McLaren
-2026,driver,7,144.0,0,piastri,Oscar Piastri,McLaren
+2026,driver,1,380.0,9,antonelli,Andrea Kimi Antonelli,Mercedes
+2026,driver,2,261.0,3,max_verstappen,Max Verstappen,Red Bull
+2026,driver,3,259.0,1,hamilton,Lewis Hamilton,Ferrari
+2026,driver,4,250.0,3,russell,George Russell,Mercedes
+2026,driver,5,245.0,1,leclerc,Charles Leclerc,Ferrari
+2026,driver,6,221.0,2,norris,Lando Norris,McLaren
+2026,driver,7,150.0,0,piastri,Oscar Piastri,McLaren
 2026,driver,8,105.0,0,hadjar,Isack Hadjar,Red Bull
-2026,driver,9,77.0,0,lawson,Liam Lawson,Red Bull
-2026,driver,10,42.0,0,gasly,Pierre Gasly,Alpine F1 Team
+2026,driver,9,79.0,0,lawson,Liam Lawson,Red Bull
+2026,driver,10,43.0,0,gasly,Pierre Gasly,Alpine F1 Team
 2026,driver,11,38.0,0,arvid_lindblad,Arvid Lindblad,RB F1 Team
-2026,driver,12,27.0,0,colapinto,Franco Colapinto,Alpine F1 Team
+2026,driver,12,31.0,0,colapinto,Franco Colapinto,Alpine F1 Team
 2026,driver,13,23.0,0,bearman,Oliver Bearman,Haas F1 Team
 2026,driver,14,13.0,0,hulkenberg,Nico Hülkenberg,Audi
 2026,driver,15,10.0,0,bortoleto,Gabriel Bortoleto,Audi
@@ -882,14 +882,14 @@ season,kind,position,points,wins,id,name,team
 2026,driver,20,1.0,0,tsunoda,Yuki Tsunoda,RB F1 Team
 2026,driver,21,0.0,0,stroll,Lance Stroll,Aston Martin
 2026,driver,22,0.0,0,bottas,Valtteri Bottas,Cadillac F1 Team
-2026,driver,23,0.0,0,perez,Sergio Pérez,Cadillac F1 Team
-2026,driver,24,0.0,0,ryo_hirakawa,Ryo Hirakawa,Haas F1 Team
-2026,constructor,1,607.0,12,mercedes,Mercedes,
-2026,constructor,2,474.0,2,ferrari,Ferrari,
-2026,constructor,3,355.0,2,red_bull,Red Bull,
-2026,constructor,4,355.0,2,mclaren,McLaren,
-2026,constructor,5,102.0,0,rb,RB F1 Team,
-2026,constructor,6,69.0,0,alpine,Alpine F1 Team,
+2026,driver,23,0.0,0,ryo_hirakawa,Ryo Hirakawa,Haas F1 Team
+2026,driver,24,0.0,0,perez,Sergio Pérez,Cadillac F1 Team
+2026,constructor,1,630.0,12,mercedes,Mercedes,
+2026,constructor,2,504.0,2,ferrari,Ferrari,
+2026,constructor,3,380.0,3,red_bull,Red Bull,
+2026,constructor,4,371.0,2,mclaren,McLaren,
+2026,constructor,5,104.0,0,rb,RB F1 Team,
+2026,constructor,6,74.0,0,alpine,Alpine F1 Team,
 2026,constructor,7,30.0,0,haas,Haas F1 Team,
 2026,constructor,8,23.0,0,audi,Audi,
 2026,constructor,9,12.0,0,williams,Williams,
