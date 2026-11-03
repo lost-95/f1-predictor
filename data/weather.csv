@@ -504,7 +504,7 @@ season,round,weather_source,race_start_local,temp_c,humidity,wind_kmh,cloud_cove
 2026,17,ERA5 reanalysis (Open-Meteo archive),2026-10-11T20:00,28.9,78.0,4.9,96.0,0.0,0.2,3.0,0.0
 2026,18,ERA5 reanalysis (Open-Meteo archive),2026-10-25T15:00,27.1,42.0,12.0,100.0,0.0,0.0,3.0,0.0
 2026,19,Open-Meteo recent analysis,2026-11-01T14:00,24.4,34.0,9.9,56.0,0.1,0.0,51.0,0.0
-2026,20,Open-Meteo forecast,2026-11-08T14:00,17.2,69.0,16.6,100.0,0.0,0.0,3.0,0.0
+2026,20,Open-Meteo forecast,2026-11-08T14:00,17.8,56.0,15.7,10.0,0.0,0.0,0.0,0.0
 2026,21,not available yet,,,,,,,,,
 2026,22,not available yet,,,,,,,,,
 2026,23,not available yet,,,,,,,,,
