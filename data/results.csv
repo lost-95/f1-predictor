@@ -10594,3 +10594,25 @@ season,round,driverId,driverName,driverCode,nationality,constructorId,constructo
 2026,19,bottas,Valtteri Bottas,BOT,Finnish,cadillac,Cadillac F1 Team,21,20,R,0.0,42,Retired,20
 2026,19,stroll,Lance Stroll,STR,Canadian,aston_martin,Aston Martin,19,21,R,0.0,5,Retired,22
 2026,19,alonso,Fernando Alonso,ALO,Spanish,aston_martin,Aston Martin,17,22,R,0.0,5,Retired,21
+2026,20,norris,Lando Norris,NOR,British,mclaren,McLaren,1,1,1,25.0,71,Finished,3
+2026,20,max_verstappen,Max Verstappen,VER,Dutch,red_bull,Red Bull,21,2,2,18.0,71,Finished,5
+2026,20,hadjar,Isack Hadjar,HAD,French,red_bull,Red Bull,5,3,3,15.0,71,Finished,2
+2026,20,russell,George Russell,RUS,British,mercedes,Mercedes,7,4,4,12.0,71,Finished,12
+2026,20,antonelli,Andrea Kimi Antonelli,ANT,Italian,mercedes,Mercedes,2,5,5,10.0,71,Finished,1
+2026,20,piastri,Oscar Piastri,PIA,Australian,mclaren,McLaren,10,6,6,8.0,71,Finished,4
+2026,20,lawson,Liam Lawson,LAW,New Zealander,rb,RB F1 Team,3,7,7,6.0,71,Finished,6
+2026,20,leclerc,Charles Leclerc,LEC,Monegasque,ferrari,Ferrari,14,8,8,4.0,71,Finished,13
+2026,20,hamilton,Lewis Hamilton,HAM,British,ferrari,Ferrari,20,9,9,2.0,70,Lapped,8
+2026,20,hulkenberg,Nico Hülkenberg,HUL,German,audi,Audi,4,10,10,1.0,70,Lapped,9
+2026,20,arvid_lindblad,Arvid Lindblad,LIN,British,rb,RB F1 Team,18,11,11,0.0,70,Lapped,10
+2026,20,alonso,Fernando Alonso,ALO,Spanish,aston_martin,Aston Martin,8,12,12,0.0,70,Lapped,18
+2026,20,colapinto,Franco Colapinto,COL,Argentine,alpine,Alpine F1 Team,13,13,13,0.0,70,Lapped,7
+2026,20,gasly,Pierre Gasly,GAS,French,alpine,Alpine F1 Team,15,14,14,0.0,70,Lapped,15
+2026,20,albon,Alexander Albon,ALB,Thai,williams,Williams,9,15,15,0.0,70,Lapped,16
+2026,20,bortoleto,Gabriel Bortoleto,BOR,Brazilian,audi,Audi,19,16,16,0.0,70,Lapped,19
+2026,20,bearman,Oliver Bearman,BEA,British,haas,Haas F1 Team,6,17,17,0.0,70,Lapped,11
+2026,20,perez,Sergio Pérez,PER,Mexican,cadillac,Cadillac F1 Team,22,18,18,0.0,69,Lapped,20
+2026,20,sainz,Carlos Sainz,SAI,Spanish,williams,Williams,12,19,19,0.0,69,Lapped,17
+2026,20,rafael_camara,Rafael Camara,CAM,,haas,Haas F1 Team,11,20,20,0.0,69,Lapped,14
+2026,20,stroll,Lance Stroll,STR,Canadian,aston_martin,Aston Martin,16,21,R,0.0,30,Retired,21
+2026,20,bottas,Valtteri Bottas,BOT,Finnish,cadillac,Cadillac F1 Team,17,22,W,0.0,0,Did not start,0
