@@ -9901,25 +9901,25 @@ season,round,driverId,driverName,driverCode,constructorId,constructorName,q_pos,
 2026,19,stroll,Lance Stroll,STR,aston_martin,Aston Martin,19,79.072,3.343
 2026,19,perez,Sergio Pérez,PER,cadillac,Cadillac F1 Team,20,79.105,3.386
 2026,19,bottas,Valtteri Bottas,BOT,cadillac,Cadillac F1 Team,21,79.852,4.363
-2026,20,norris,Lando Norris,NOR,mclaren,McLaren,1,,
-2026,20,russell,George Russell,RUS,mercedes,Mercedes,2,,
-2026,20,antonelli,Andrea Kimi Antonelli,ANT,mercedes,Mercedes,3,,
-2026,20,leclerc,Charles Leclerc,LEC,ferrari,Ferrari,4,,
-2026,20,lawson,Liam Lawson,LAW,rb,RB F1 Team,5,,
-2026,20,hulkenberg,Nico Hülkenberg,HUL,audi,Audi,6,,
-2026,20,hadjar,Isack Hadjar,HAD,red_bull,Red Bull,7,,
-2026,20,bearman,Oliver Bearman,BEA,haas,Haas F1 Team,8,,
-2026,20,alonso,Fernando Alonso,ALO,aston_martin,Aston Martin,9,,
-2026,20,albon,Alexander Albon,ALB,williams,Williams,10,,
-2026,20,hamilton,Lewis Hamilton,HAM,ferrari,Ferrari,11,,
-2026,20,piastri,Oscar Piastri,PIA,mclaren,McLaren,12,,
-2026,20,rafael_camara,Rafael Camara,CAM,haas,Haas F1 Team,13,,
-2026,20,arvid_lindblad,Arvid Lindblad,LIN,rb,RB F1 Team,14,,
-2026,20,sainz,Carlos Sainz,SAI,williams,Williams,15,,
-2026,20,max_verstappen,Max Verstappen,VER,red_bull,Red Bull,16,,
-2026,20,colapinto,Franco Colapinto,COL,alpine,Alpine F1 Team,17,,
-2026,20,gasly,Pierre Gasly,GAS,alpine,Alpine F1 Team,18,,
-2026,20,stroll,Lance Stroll,STR,aston_martin,Aston Martin,19,,
-2026,20,bottas,Valtteri Bottas,BOT,cadillac,Cadillac F1 Team,20,,
-2026,20,perez,Sergio Pérez,PER,cadillac,Cadillac F1 Team,21,,
-2026,20,bortoleto,Gabriel Bortoleto,BOR,audi,Audi,22,,
+2026,20,norris,Lando Norris,NOR,mclaren,McLaren,1,87.47,0.836
+2026,20,russell,George Russell,RUS,mercedes,Mercedes,2,86.745,0.0
+2026,20,antonelli,Andrea Kimi Antonelli,ANT,mercedes,Mercedes,3,88.095,1.556
+2026,20,leclerc,Charles Leclerc,LEC,ferrari,Ferrari,4,88.082,1.541
+2026,20,lawson,Liam Lawson,LAW,rb,RB F1 Team,5,87.049,0.35
+2026,20,hulkenberg,Nico Hülkenberg,HUL,audi,Audi,6,88.361,1.863
+2026,20,hadjar,Isack Hadjar,HAD,red_bull,Red Bull,7,87.218,0.545
+2026,20,bearman,Oliver Bearman,BEA,haas,Haas F1 Team,8,89.13,2.749
+2026,20,alonso,Fernando Alonso,ALO,aston_martin,Aston Martin,9,89.072,2.683
+2026,20,albon,Alexander Albon,ALB,williams,Williams,10,88.918,2.505
+2026,20,hamilton,Lewis Hamilton,HAM,ferrari,Ferrari,11,90.001,3.754
+2026,20,piastri,Oscar Piastri,PIA,mclaren,McLaren,12,90.369,4.178
+2026,20,rafael_camara,Rafael Camara,CAM,haas,Haas F1 Team,13,91.515,5.499
+2026,20,arvid_lindblad,Arvid Lindblad,LIN,rb,RB F1 Team,14,91.687,5.697
+2026,20,sainz,Carlos Sainz,SAI,williams,Williams,15,91.785,5.81
+2026,20,max_verstappen,Max Verstappen,VER,red_bull,Red Bull,16,91.238,5.18
+2026,20,colapinto,Franco Colapinto,COL,alpine,Alpine F1 Team,17,93.327,7.0
+2026,20,gasly,Pierre Gasly,GAS,alpine,Alpine F1 Team,18,93.449,7.0
+2026,20,stroll,Lance Stroll,STR,aston_martin,Aston Martin,19,93.65299999999999,7.0
+2026,20,bottas,Valtteri Bottas,BOT,cadillac,Cadillac F1 Team,20,93.774,7.0
+2026,20,perez,Sergio Pérez,PER,cadillac,Cadillac F1 Team,21,94.509,7.0
+2026,20,bortoleto,Gabriel Bortoleto,BOR,audi,Audi,22,101.564,7.0
