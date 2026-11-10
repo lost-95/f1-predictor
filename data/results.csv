@@ -10613,6 +10613,6 @@ season,round,driverId,driverName,driverCode,nationality,constructorId,constructo
 2026,20,bearman,Oliver Bearman,BEA,British,haas,Haas F1 Team,6,17,17,0.0,70,Lapped,11
 2026,20,perez,Sergio Pérez,PER,Mexican,cadillac,Cadillac F1 Team,22,18,18,0.0,69,Lapped,20
 2026,20,sainz,Carlos Sainz,SAI,Spanish,williams,Williams,12,19,19,0.0,69,Lapped,17
-2026,20,rafael_camara,Rafael Camara,CAM,,haas,Haas F1 Team,11,20,20,0.0,69,Lapped,14
+2026,20,rafael_camara,Rafael Camara,CAM,Brazilian,haas,Haas F1 Team,11,20,20,0.0,69,Lapped,14
 2026,20,stroll,Lance Stroll,STR,Canadian,aston_martin,Aston Martin,16,21,R,0.0,30,Retired,21
 2026,20,bottas,Valtteri Bottas,BOT,Finnish,cadillac,Cadillac F1 Team,17,22,W,0.0,0,Did not start,0
