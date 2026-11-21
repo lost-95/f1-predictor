@@ -9923,3 +9923,25 @@ season,round,driverId,driverName,driverCode,constructorId,constructorName,q_pos,
 2026,20,bottas,Valtteri Bottas,BOT,cadillac,Cadillac F1 Team,20,93.774,7.0
 2026,20,perez,Sergio Pérez,PER,cadillac,Cadillac F1 Team,21,94.509,7.0
 2026,20,bortoleto,Gabriel Bortoleto,BOR,audi,Audi,22,101.564,7.0
+2026,21,antonelli,Andrea Kimi Antonelli,ANT,mercedes,Mercedes,1,93.893,0.0
+2026,21,max_verstappen,Max Verstappen,VER,red_bull,Red Bull,2,94.15100000000001,0.275
+2026,21,russell,George Russell,RUS,mercedes,Mercedes,3,94.22399999999999,0.353
+2026,21,norris,Lando Norris,NOR,mclaren,McLaren,4,94.244,0.374
+2026,21,hadjar,Isack Hadjar,HAD,red_bull,Red Bull,5,94.592,0.744
+2026,21,arvid_lindblad,Arvid Lindblad,LIN,rb,RB F1 Team,6,94.668,0.825
+2026,21,piastri,Oscar Piastri,PIA,mclaren,McLaren,7,94.763,0.927
+2026,21,lawson,Liam Lawson,LAW,rb,RB F1 Team,8,95.048,1.23
+2026,21,gasly,Pierre Gasly,GAS,alpine,Alpine F1 Team,9,94.559,0.709
+2026,21,colapinto,Franco Colapinto,COL,alpine,Alpine F1 Team,10,94.982,1.16
+2026,21,leclerc,Charles Leclerc,LEC,ferrari,Ferrari,11,95.03999999999999,1.222
+2026,21,hamilton,Lewis Hamilton,HAM,ferrari,Ferrari,12,95.253,1.448
+2026,21,hulkenberg,Nico Hülkenberg,HUL,audi,Audi,13,95.46000000000001,1.669
+2026,21,sainz,Carlos Sainz,SAI,williams,Williams,14,95.588,1.805
+2026,21,bortoleto,Gabriel Bortoleto,BOR,audi,Audi,15,95.993,2.237
+2026,21,albon,Alexander Albon,ALB,williams,Williams,16,95.856,2.091
+2026,21,rafael_camara,Rafael Camara,CAM,haas,Haas F1 Team,17,96.22,2.478
+2026,21,perez,Sergio Pérez,PER,cadillac,Cadillac F1 Team,18,97.38300000000001,3.717
+2026,21,alonso,Fernando Alonso,ALO,aston_martin,Aston Martin,19,97.4,3.735
+2026,21,stroll,Lance Stroll,STR,aston_martin,Aston Martin,20,97.55,3.895
+2026,21,bottas,Valtteri Bottas,BOT,cadillac,Cadillac F1 Team,21,97.601,3.949
+2026,21,bearman,Oliver Bearman,BEA,haas,Haas F1 Team,22,108.005,7.0
