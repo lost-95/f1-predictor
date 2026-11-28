@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <script>
+    // served under a sub-path (e.g. /f1-predictor): relative asset paths need the trailing slash
+    if (!location.pathname.endsWith('/') && !/\.[a-z0-9]+$/i.test(location.pathname))
+      location.replace(location.pathname + '/' + location.search + location.hash);
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>F1 Predictor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/style.css?v=9">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span class="logo">F1</span><span>Predictor</span></div>
+    <nav id="nav">
+      <a href="#next" data-view="next" data-i18n="nav.next"></a>
+      <a href="#fanta" data-view="fanta" data-i18n="nav.fanta"></a>
+      <a href="#history" data-view="history" data-i18n="nav.history"></a>
+      <a href="#teams" data-view="teams" data-i18n="nav.teams"></a>
+      <a href="#model" data-view="model" data-i18n="nav.model"></a>
+    </nav>
+    <select id="country" class="country" data-i18n-title="country.label" aria-label="Country"></select>
+  </header>
+
+  <main>
+    <!-- PROSSIMA GARA -->
+    <section id="view-next" class="view">
+      <div id="next-loading" class="loading"></div>
+      <div id="next-content" hidden>
+        <div class="hero card">
+          <div>
+            <div class="eyebrow" id="next-round"></div>
+            <h1 id="next-name"></h1>
+            <div class="muted" id="next-circuit"></div>
+            <div class="chips">
+              <span class="chip" id="next-date"></span>
+              <span class="chip" id="next-countdown"></span>
+              <span class="chip accent" id="next-mode"></span>
+            </div>
+          </div>
+          <div class="weather" id="next-weather"></div>
+        </div>
+
+        <div class="toolbar">
+          <span class="muted" data-i18n="scenario.label"></span>
+          <div class="seg" id="scenario">
+            <button data-s="auto" class="on" data-i18n="scenario.auto"></button>
+            <button data-s="dry" data-i18n="scenario.dry"></button>
+            <button data-s="wet" data-i18n="scenario.wet"></button>
+          </div>
+        </div>
+
+        <div class="podium" id="podium"></div>
+
+        <div class="card">
+          <h2 data-i18n="pred.title"></h2>
+          <p class="muted small" id="next-note"></p>
+          <div class="table-wrap">
+            <table class="grid-table" id="pred-table">
+              <thead><tr>
+                <th>#</th><th data-i18n="th.driver"></th><th class="hide-sm" data-i18n="th.team"></th><th data-i18n="th.grid"></th>
+                <th data-i18n="th.win"></th><th data-i18n="th.podium"></th><th class="hide-sm" data-i18n="th.points"></th><th class="hide-sm" data-i18n="th.exp_pos"></th>
+              </tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FANTA F1 -->
+    <section id="view-fanta" class="view" hidden>
+      <div id="fanta-loading" class="loading"></div>
+      <div id="fanta-content" class="fanta-layout" hidden>
+        <aside class="side-menu" id="fanta-menu">
+          <button data-sub="prices" class="on" data-i18n="fanta.menu.prices"></button>
+          <div class="side-group" data-i18n="fanta.menu.builder"></div>
+          <button data-sub="drivers" class="indent"><span data-i18n="fanta.menu.drivers"></span> <span class="badge" id="badge-drivers"></span></button>
+          <button data-sub="teams" class="indent"><span data-i18n="fanta.menu.teams"></span> <span class="badge" id="badge-teams"></span></button>
+        </aside>
+
+        <div class="fanta-main">
+          <!-- which expected points to use: before qualifying, or with the real qualifying result -->
+          <div class="toolbar basis-bar" id="fanta-basis-bar" hidden>
+            <span class="muted" data-i18n="basis.label"></span>
+            <div class="seg" id="fanta-basis">
+              <button data-b="post" data-i18n="basis.post"></button>
+              <button data-b="pre" data-i18n="basis.pre"></button>
+            </div>
+            <span class="sub" id="fanta-basis-note"></span>
+          </div>
+          <!-- Listino -->
+          <div id="fanta-prices" class="fanta-sub">
+            <h1 data-i18n="fanta.title"></h1>
+            <p class="muted" id="fanta-race"></p>
+            <div class="two-col">
+              <div class="card">
+                <h2 data-i18n="fanta.how"></h2>
+                <ul class="list">
+                  <li><span data-i18n-html="fanta.how1"></span> <span id="fanta-blend"></span> <span data-i18n="fanta.fixed"></span></li>
+                  <li id="fanta-official-note" data-i18n-html="fanta.official" hidden></li>
+                  <li class="model-pricing" data-i18n-html="fanta.how2"></li>
+                  <li class="model-pricing" data-i18n-html="fanta.how3"></li>
+                  <li class="model-pricing" data-i18n="fanta.how4"></li>
+                  <li class="model-pricing" data-i18n-html="fanta.how5"></li>
+                  <li data-i18n-html="fanta.team_value"></li>
+                </ul>
+                <details class="points-table">
+                  <summary data-i18n="fanta.points_table"></summary>
+                  <div class="table-wrap"><table class="grid-table" id="fanta-points"></table></div>
+                </details>
+              </div>
+              <div class="card" id="fanta-min-card">
+                <h2 data-i18n="fanta.min_title"></h2>
+                <p class="muted small" data-i18n="fanta.min_help"></p>
+                <div class="fanta-min">
+                  <input type="range" id="fanta-min" min="3" max="4" step="0.1" value="3">
+                  <b id="fanta-min-val" class="price-tag">3,0</b>
+                  <button class="btn ghost" id="fanta-auto" data-i18n="fanta.auto"></button>
+                </div>
+                <div class="chips" id="fanta-summary"></div>
+              </div>
+            </div>
+            <div class="card">
+              <h2 data-i18n="fanta.list_drivers"></h2>
+              <div class="table-wrap">
+                <table class="grid-table" id="fanta-table">
+                  <thead><tr>
+                    <th>#</th><th data-i18n="th.driver"></th><th class="hide-sm" data-i18n="th.team"></th><th data-i18n="th.price"></th>
+                    <th class="hide-sm" data-i18n="th.model"></th><th class="hide-sm" data-i18n="th.form"></th><th data-i18n="th.value"></th>
+                  </tr></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card">
+              <h2 data-i18n="fanta.list_teams"></h2>
+              <div class="table-wrap">
+                <table class="grid-table" id="fanta-teams-table">
+                  <thead><tr><th>#</th><th data-i18n="th.team"></th><th class="hide-sm" data-i18n="th.drivers"></th><th data-i18n="th.price"></th><th data-i18n="th.team_value"></th></tr></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team building (drivers / teams share the same layout) -->
+          <div id="fanta-builder" class="fanta-sub" hidden>
+            <h1 id="b-title"></h1>
+            <p class="muted" id="b-rules"></p>
+            <div class="card builder-summary">
+              <div class="b-stats">
+                <div><span class="muted small" data-i18n="th.drivers"></span><b id="b-count-drivers"></b></div>
+                <div><span class="muted small" data-i18n="fanta.menu.teams"></span><b id="b-count-teams"></b></div>
+                <div><span class="muted small" data-i18n="b.spent"></span><b id="b-spent"></b><span class="sub" id="b-split"></span></div>
+                <div><span class="muted small" data-i18n="b.left"></span><b id="b-left"></b></div>
+                <div><span class="muted small" data-i18n="b.exp"></span><b id="b-exp"></b><span class="sub" id="b-target"></span></div>
+              </div>
+              <div class="budget-bar"><i id="b-bar"></i></div>
+              <div class="b-status" id="b-status"></div>
+              <div class="b-picks" id="b-picks"></div>
+              <div class="b-actions">
+                <button class="btn" id="b-best" data-i18n="b.best"></button>
+                <button class="btn ghost" id="b-clear" data-i18n="b.clear"></button>
+              </div>
+              <p class="sub" data-i18n="b.best_note"></p>
+            </div>
+            <div class="card">
+              <div class="table-wrap">
+                <table class="grid-table" id="b-table">
+                  <thead><tr><th id="b-th-name"></th><th data-i18n="th.price"></th><th data-i18n="th.value"></th><th></th></tr></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORICO -->
+    <section id="view-history" class="view" hidden>
+      <div class="toolbar">
+        <h1 class="inline" data-i18n="hist.title"></h1>
+        <select id="season-select"></select>
+      </div>
+      <div class="champ card" id="champ"></div>
+      <div class="card">
+        <h2 data-i18n="hist.races"></h2>
+        <p class="muted small" data-i18n="hist.note"></p>
+        <div class="table-wrap">
+          <table class="grid-table clickable" id="races-table">
+            <thead><tr><th>R</th><th data-i18n="th.gp"></th><th class="hide-sm" data-i18n="th.date"></th><th data-i18n="th.weather"></th>
+              <th data-i18n="th.winner"></th><th class="hide-sm">Pole</th><th data-i18n="th.pick"></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="card"><h2 data-i18n="hist.drivers"></h2><div class="table-wrap"><table class="grid-table" id="drivers-table"><tbody></tbody></table></div></div>
+        <div class="card"><h2 data-i18n="hist.constructors"></h2><div class="table-wrap"><table class="grid-table" id="constructors-table"><tbody></tbody></table></div></div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="view-teams" class="view" hidden>
+      <h1 data-i18n="teams.title"></h1>
+      <p class="muted" data-i18n="teams.intro"></p>
+      <div class="card">
+        <div class="toolbar tight">
+          <h2 class="inline" id="team-chart-title"></h2>
+          <div class="seg" id="team-metric">
+            <button data-m="wins" class="on" data-i18n="teams.m_wins"></button>
+            <button data-m="podiums" data-i18n="teams.m_podiums"></button>
+            <button data-m="share" data-i18n="teams.m_share"></button>
+          </div>
+        </div>
+        <div class="chart-box tall"><canvas id="team-chart"></canvas></div>
+      </div>
+      <div class="card">
+        <h2 data-i18n="teams.palmares"></h2>
+        <div class="table-wrap">
+          <table class="grid-table" id="teams-table">
+            <thead><tr><th data-i18n="th.family"></th><th class="hide-sm" data-i18n="th.names"></th><th data-i18n="th.titles"></th><th data-i18n="th.wins"></th><th data-i18n="th.podiums"></th><th class="hide-sm" data-i18n="th.seasons"></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODELLO -->
+    <section id="view-model" class="view" hidden>
+      <h1 data-i18n="model.title"></h1>
+      <div class="two-col">
+        <div class="card">
+          <h2 data-i18n="model.acc"></h2>
+          <p class="muted small" data-i18n="model.acc_note"></p>
+          <div class="table-wrap"><table class="grid-table" id="metrics-table"></table></div>
+        </div>
+        <div class="card">
+          <h2 data-i18n="model.data"></h2>
+          <ul class="list">
+            <li data-i18n-html="model.li1"></li>
+            <li data-i18n-html="model.li2"></li>
+            <li data-i18n-html="model.li3"></li>
+            <li data-i18n-html="model.li4"></li>
+          </ul>
+          <div class="refresh">
+            <button id="refresh-btn" class="btn" data-i18n="model.refresh"></button>
+            <span class="muted small" id="refresh-status"></span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2 data-i18n="model.season_chart"></h2>
+        <div class="chart-box"><canvas id="season-chart"></canvas></div>
+      </div>
+      <div class="two-col">
+        <div class="card"><h2 data-i18n="model.imp_pre"></h2><div class="chart-box tall"><canvas id="imp-pre"></canvas></div></div>
+        <div class="card"><h2 data-i18n="model.imp_post"></h2><div class="chart-box tall"><canvas id="imp-post"></canvas></div></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="modal" class="modal" hidden>
+    <div class="modal-box">
+      <button class="close" id="modal-close" data-i18n-aria="m.close">×</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script>window.F1_STATIC = true;</script>
+  <script src="static/i18n.js?v=5"></script>
+  <script src="static/app.js?v=13"></script>
+</body>
+</html>
